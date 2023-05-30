@@ -8,6 +8,7 @@ import checkersgame.Model.Colour;
 import checkersgame.Model.LinkedPoint;
 import checkersgame.Model.Piece;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
@@ -18,32 +19,32 @@ import javax.swing.JComponent;
  */
 public class HintComponent extends JComponent{
     
-    private static Piece piece;
+    private Piece piece;
     
     public HintComponent(Piece p)
     {
         piece = p;
     }
-    
-    public static void clearPiece()
-    {
-        piece = null;
-    }
-    
+
     @Override
-    public void paintComponent(Graphics g)
+    public void paint(Graphics g)
     {
-        super.paintComponent(g);
-        
         if(piece == null)
-            return;
-        
-        Graphics2D g2d = (Graphics2D) g.create();
-        
+            return;      
+         
         for(LinkedPoint lp : piece.moves)
-        {
-            g2d.setColor(Color.GRAY);
-            g2d.fillOval(lp.toMove.x, lp.toMove.y, 10, 10);
+        {       
+            Dimension square = Panel.squareSize;
+        
+            int posx = lp.toMove.x * square.width;
+            int posy = lp.toMove.y * square.height;
+            int width = square.width;
+            int height = square.height;
+
+            this.setBounds(posx, posy, width, height);
+            
+            g.setColor(Color.GRAY);
+            g.fillOval(posx + 10, posy + 10, width/2, height/2);
         }      
     }
 }

@@ -16,7 +16,12 @@ public class PiecesArray {
     private static int dimension;
     public static ArrayList<Piece> pieces;
 
-/**
+    public PiecesArray(int size)
+    {
+        this.dimension = size;
+    }
+    
+    /**
      * Populates the board with the correct placement and number of pieces.
      * @param dimension Size of the board
      */
@@ -113,9 +118,9 @@ public class PiecesArray {
      * Gets the ArrayList of pieces.
      * @return ArrayList<Piece> of all alive pieces
      */
-    public ArrayList<Piece> getPieces()
+    public static ArrayList<Piece> getPieces()
     {
-        return this.pieces;
+        return pieces;
     }
 
     /**

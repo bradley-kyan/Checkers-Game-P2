@@ -4,46 +4,86 @@
  */
 package checkersgame.View;
 
+import checkersgame.Controller.BoardController;
 import checkersgame.Model.Colour;
+import checkersgame.Model.LinkedPoint;
 import checkersgame.Model.Piece;
 import checkersgame.Model.PiecesArray;
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 
 /**
  *
  * @author bradl
  */
-public class PieceComponent extends JComponent{
+public class PieceComponent extends JButton implements ActionListener{
 
-    private PiecesArray pa;
+    private Piece piece;
+    private Dimension square;
+    private static boolean hint;
     
-    public PieceComponent(PiecesArray pa)
+    public PieceComponent(Piece piece)
     {
-        this.pa = pa;
+        this.piece = piece;  
+        this.setVisible(true); 
+        this.addActionListener(this);
     }
     
     @Override
-    public void paintComponent(Graphics g)
-    {
-        super.paintComponent(g);
+    public void paint(Graphics g)
+    {   
+        square = Panel.squareSize;
         
-        if(pa == null)
-            return;
+        int posx = piece.position.x * square.width;
+        int posy = piece.position.y * square.height;
+        int width = square.width;
+        int height = square.height;
         
-        Graphics2D g2d = (Graphics2D) g.create();
+        this.setBounds(posx, posy, width, height);       
         
-        for(Piece piece : pa.getPieces())
+        if(piece.getColour() == Colour.RED)
+            g.setColor(Color.red);
+        else
+            g.setColor(Color.black);
+        
+        g.fillOval(posx + 10, posy + 10, width - 20, height - 20);
+       
+        if(hint)
         {
-            if(piece.getColour() == Colour.RED)
-                g2d.setColor(Color.RED);
-            else if(piece.getColour() == Colour.BLACK)
-                g2d.setColor(Color.BLACK);
-            
-            g2d.fillOval(piece.position.x, piece.position.y, 30, 30);
+            for(Component comp : this.getComponents())
+                comp.paint(g);         
         }
-        
+        else
+        {
+            this.removeAll();
+            this.repaint();
+            hint = false;
+        }
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e)
+    {
+        BoardController.updatePieces();
+
+        if(hint == true)
+        {
+            hint = false;
+        }
+        else
+        {
+            hint = true;
+            for(LinkedPoint lp : piece.moves)
+            {
+                this.add(new HintComponent(piece));
+            }
+            System.out.println("Press!");           
+        }
     }
 }
