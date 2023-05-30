@@ -2,8 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package checkersgame;
+package checkersgame.Controller;
 
+import checkersgame.Colour;
+import checkersgame.Controller.Board;
+import checkersgame.Model.LinkedPoint;
+import checkersgame.Model.Piece;
 import java.awt.Point;
 import java.util.ArrayList;
 

@@ -1,5 +1,9 @@
-package checkersgame;
+package checkersgame.Controller;
 
+import checkersgame.Colour;
+import checkersgame.Model.LinkedPoint;
+import checkersgame.Model.Rank;
+import checkersgame.Model.Piece;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Iterator;
