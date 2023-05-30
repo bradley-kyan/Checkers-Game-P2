@@ -1,4 +1,4 @@
-package checkersgame;
+package checkersgame.Model;
 
 /**
  * @author kishanyugendran

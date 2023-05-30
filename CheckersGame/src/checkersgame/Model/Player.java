@@ -1,6 +1,5 @@
 package checkersgame.Model;
 
-import checkersgame.Colour;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 

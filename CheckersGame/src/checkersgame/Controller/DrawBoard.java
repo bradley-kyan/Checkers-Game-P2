@@ -4,7 +4,7 @@
  */
 package checkersgame.Controller;
 
-import checkersgame.Colour;
+import checkersgame.Model.Colour;
 import checkersgame.Controller.Board;
 import checkersgame.Model.LinkedPoint;
 import checkersgame.Model.Piece;

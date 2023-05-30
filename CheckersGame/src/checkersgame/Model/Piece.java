@@ -1,6 +1,5 @@
 package checkersgame.Model;
 
-import checkersgame.Colour;
 import java.awt.Point;
 import java.util.ArrayList;
 
