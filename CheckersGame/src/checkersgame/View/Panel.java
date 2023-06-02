@@ -27,6 +27,7 @@ public class Panel extends JPanel{
     {
         this.size = size;
         this.setVisible(true);
+        this.setDoubleBuffered(true);
     }
     
     @Override
@@ -49,11 +50,7 @@ public class Panel extends JPanel{
                 
                 g.fillRect(posx, posy, squareSize.width, squareSize.height);
             }
-        } 
-        
-        for(Component comp : this.getComponents())
-            comp.paint(g);
-
+        }
         repaint();
     }
 }

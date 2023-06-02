@@ -19,7 +19,6 @@ public class Frame extends JFrame{
     
     public Frame()
     {
-        this.setVisible(true);
         Toolkit kit = Toolkit.getDefaultToolkit();
         Dimension frameSize = kit.getScreenSize();
         frameSize.height = frameSize.height/2;
@@ -32,5 +31,6 @@ public class Frame extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         this.setSize(frameSize);
-    }
+        this.setVisible(true);
+    }  
 }

@@ -41,6 +41,13 @@ public class Piece {
         this.position = pos;
     }
     
+    public boolean equals(Piece p)
+    {
+        if(p.ID.equals(this.ID))
+            return true;
+        return false;
+    }
+    
     public Piece(char c)
     {
         hintIdentifier = c;

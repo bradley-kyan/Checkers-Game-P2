@@ -6,63 +6,58 @@ package checkersgame.View;
 
 import checkersgame.Controller.BoardController;
 import checkersgame.Controller.PieceController;
-import checkersgame.Model.Colour;
+import checkersgame.Model.LinkedPoint;
 import checkersgame.Model.Piece;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 
 /**
  *
  * @author bradl
  */
-public class PieceComponent extends JButton implements ActionListener{
-
+public class HintButton extends JButton implements ActionListener{
+    
     public Piece piece;
-    private Dimension square;
+    private Point moveLocation;
     
-    public PieceComponent(Piece piece)
+    public HintButton(LinkedPoint lp)
     {
-        this.piece = piece;  
-        this.setVisible(true); 
+        this.piece = lp.origin;
+        this.moveLocation = lp.toMove;
         this.addActionListener(this);
-        this.setDoubleBuffered(false);
-        if(piece.getColour() == Colour.RED)
-            this.setUI(new PieceUI(Color.RED));
-        else
-            this.setUI(new PieceUI(Color.BLACK));
+        this.setVisible(true);
+        this.setUI(new HintUI());
     }
-    
+
     @Override
     public void paintComponent(Graphics g)
-    {   
+    {
+        this.setContentAreaFilled(false);
         Graphics2D g2 = (Graphics2D) g;
         super.paintComponent(g2);
-        square = Panel.squareSize;
         
-        int posx = piece.position.x * square.width;
-        int posy = piece.position.y * square.height;
+        Dimension square = Panel.squareSize;
+        
+        int posx = moveLocation.x * square.width;
+        int posy = moveLocation.y * square.height;
         int width = square.width;
         int height = square.height;
-        
 
-        this.setLocation(posx, posy);
-        this.setSize(width, height);
-        this.setContentAreaFilled(false);
-
-        repaint();
+        this.setBounds(posx, posy, width, height);
     }
     
     @Override
-    public void actionPerformed(ActionEvent e)
-    {          
-        BoardController.showHint(piece);
-        System.out.println("Press!"); 
+    public void actionPerformed(ActionEvent e) 
+    {
+        System.out.println("Hint!");
+        BoardController.movePiece(piece, moveLocation);
+        BoardController.addPieces();
     }
 }

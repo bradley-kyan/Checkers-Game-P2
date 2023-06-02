@@ -4,11 +4,16 @@
  */
 package checkersgame.Controller;
 
+import checkersgame.Model.LinkedPoint;
 import checkersgame.Model.Piece;
 import checkersgame.Model.PiecesArray;
-import checkersgame.View.HintComponent;
+import checkersgame.View.HintButton;
 import checkersgame.View.PieceComponent;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import javax.swing.JButton;
 
 /**
  *
@@ -16,22 +21,42 @@ import java.util.ArrayList;
  */
 public class PieceController{
     
-    private ArrayList<PieceComponent> components;
+    private static ArrayList<Component> components;
     
     public PieceController()
     {
-        components = new ArrayList<PieceComponent>();
+        components = new ArrayList<Component>();
         if(PiecesArray.pieces == null)
             return;
+        updatePieces();
+    }
+    public ArrayList<Component> getComponents()
+    {
+        updatePieces();
+        return this.components;
+    }
+
+    public static void updatePieces()
+    {
+        BoardController.updatePieces();
+
+        for(Piece piece : PiecesArray.getPieces())
+        {
+            if(piece == null)
+                continue;
+        }
+        if(components == null)
+            return;
+        
+        components = new ArrayList<Component>();
         
         for(Piece piece : PiecesArray.getPieces())
         {
+            if(piece == null)
+                continue;
             PieceComponent pc = new PieceComponent(piece);
-            this.components.add(pc);
+            
+            components.add(pc);
         }
-    }
-    public ArrayList<PieceComponent> getComponents()
-    {
-        return this.components;
     }
 }
