@@ -28,12 +28,30 @@ public class Panel extends JPanel{
         this.size = size;
         this.setVisible(true);
         this.setDoubleBuffered(true);
+        this.setAlignmentX(CENTER_ALIGNMENT);
     }
     
     @Override
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
+        
+        Dimension parent = this.getParent().getSize();
+        if(parent.height > parent.width)
+        {
+            Dimension d = new Dimension(parent.width, parent.width);
+            this.setMaximumSize(d);
+            this.setPreferredSize(d);
+            this.setMinimumSize(d);
+        }
+        else
+        {
+            Dimension d = new Dimension(parent.height, parent.height);
+            this.setMaximumSize(d);
+            this.setPreferredSize(d);
+            this.setMinimumSize(d);
+        }
+        
         squareSize = new Dimension(this.getSize().width/size, this.getSize().height/size);
         
         for(int x = 0; x < size; x++)
@@ -51,6 +69,5 @@ public class Panel extends JPanel{
                 g.fillRect(posx, posy, squareSize.width, squareSize.height);
             }
         }
-        repaint();
     }
 }

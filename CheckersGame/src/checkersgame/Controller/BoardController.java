@@ -9,6 +9,9 @@ import checkersgame.View.Panel;
 import checkersgame.View.PieceComponent;
 import java.awt.Component;
 import java.awt.Point;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import javax.swing.BoxLayout;
 
 /**
  * @author bradl
@@ -28,8 +31,9 @@ public class BoardController
     public BoardController(int size)
     {       
         frame = new Frame();
+        frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
         panel = new Panel(size);
-        
+
         panel.setSize(frame.getSize());       
         
         pieceArray = new PiecesArray(size);
