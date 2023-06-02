@@ -72,7 +72,7 @@ public class BoardController
     public static void showHint(Piece piece)
     {
         for(Component component : pieceController.getComponents())
-        {
+        {            
             if(((PieceComponent)component).piece.equals(piece))
             {
                 for(LinkedPoint lp : piece.moves)

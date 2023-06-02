@@ -61,7 +61,8 @@ public class PieceComponent extends JButton implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e)
-    {          
+    {        
+        BoardController.addPieces();
         BoardController.showHint(piece);
         System.out.println("Press!"); 
     }
