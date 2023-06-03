@@ -5,11 +5,8 @@
 package checkersgame.View;
 
 import checkersgame.Controller.BoardController;
-import checkersgame.Controller.PieceController;
 import checkersgame.Model.LinkedPoint;
 import checkersgame.Model.Piece;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -43,7 +40,7 @@ public class HintButton extends JButton implements ActionListener{
         Graphics2D g2 = (Graphics2D) g;
         super.paintComponent(g2);
         
-        Dimension square = Panel.squareSize;
+        Dimension square = BoardPanel.squareSize;
         
         int posx = moveLocation.x * square.width;
         int posy = moveLocation.y * square.height;

@@ -21,12 +21,13 @@ public class HintUI extends BasicButtonUI{
     {   
         if(!c.isVisible())
             return;
-        int w = c.getWidth();
-        int h = c.getHeight();
+        int width = c.getWidth();
+        int height = c.getHeight();
+        
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.lightGray);
-        g2d.fillOval(30, 30, w-60, h -60);
+        g2d.fillOval(30, 30, width-60, height -60);
         g2d.setColor(Color.gray);
-        g2d.fillOval(36, 36, w-72, h-72);
+        g2d.fillOval(36, 36, width-72, height-72);
     }
 }

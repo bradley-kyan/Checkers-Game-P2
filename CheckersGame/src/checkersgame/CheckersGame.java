@@ -5,6 +5,7 @@
 package checkersgame;
 
 import checkersgame.Controller.BoardController;
+import checkersgame.Controller.MenuController;
 import java.util.Scanner;
 
 public class CheckersGame {
@@ -24,6 +25,6 @@ public class CheckersGame {
      */
     public static void runGame()
     {    
-        BoardController board = new BoardController(8);
+        MenuController menu = new MenuController();
     }
 }

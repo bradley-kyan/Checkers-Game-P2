@@ -4,26 +4,24 @@
  */
 package checkersgame.View;
 
-import checkersgame.Controller.BoardController;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Toolkit;
-import java.util.ArrayList;
-import javax.swing.JComponent;
+import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 /**
  *
  * @author bradl
  */
-public class Panel extends JPanel{
+public class BoardPanel extends JPanel{
     
     private int size;
     public static Dimension squareSize;
     
-    public Panel(int size)
+    public BoardPanel(int size)
     {
         this.size = size;
         this.setVisible(true);
@@ -35,18 +33,18 @@ public class Panel extends JPanel{
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        
+
         Dimension parent = this.getParent().getSize();
         if(parent.height > parent.width)
         {
-            Dimension d = new Dimension(parent.width, parent.width);
+            Dimension d = new Dimension(parent.width-50, parent.width-50);
             this.setMaximumSize(d);
             this.setPreferredSize(d);
             this.setMinimumSize(d);
         }
         else
         {
-            Dimension d = new Dimension(parent.height, parent.height);
+            Dimension d = new Dimension(parent.height-50, parent.height-50);
             this.setMaximumSize(d);
             this.setPreferredSize(d);
             this.setMinimumSize(d);

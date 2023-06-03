@@ -5,17 +5,14 @@
 package checkersgame.View;
 
 import checkersgame.Controller.BoardController;
-import checkersgame.Controller.PieceController;
 import checkersgame.Model.Colour;
 import checkersgame.Model.Piece;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import javax.swing.JButton;
 
 /**
@@ -44,7 +41,7 @@ public class PieceComponent extends JButton implements ActionListener{
     {   
         Graphics2D g2 = (Graphics2D) g;
         super.paintComponent(g2);
-        square = Panel.squareSize;
+        square = BoardPanel.squareSize;
         
         int posx = piece.position.x * square.width;
         int posy = piece.position.y * square.height;

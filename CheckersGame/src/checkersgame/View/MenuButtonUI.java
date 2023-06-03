@@ -14,31 +14,14 @@ import javax.swing.plaf.basic.BasicButtonUI;
  *
  * @author bradl
  */
-public class PieceUI extends BasicButtonUI{
-     
-    private Color color;
-    
-    public PieceUI(Color colour)
-    {
-        this.color = colour;
-    }
+public class MenuButtonUI extends BasicButtonUI{
     @Override
     public void paint(Graphics g, JComponent c) 
     {
         int width = c.getWidth();
         int height = c.getHeight();
         Graphics2D g2d = (Graphics2D) g;
-        
-        Color internal;
-        
-        if(color.equals(Color.RED))
-            internal = new Color(255, 88, 88);
-        else
-            internal = new Color(44, 44, 44);
-        
-        g2d.setColor(internal);
-        g2d.fillOval(10, 10, width-20, height -20);
-        g2d.setColor(color);
-        g2d.fillOval(20, 20, width-40, height-40);
+        g2d.fill3DRect(0, 0, width, height, true);
+
     }
 }

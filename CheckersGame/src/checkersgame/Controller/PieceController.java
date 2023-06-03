@@ -4,16 +4,11 @@
  */
 package checkersgame.Controller;
 
-import checkersgame.Model.LinkedPoint;
-import checkersgame.Model.Piece;
-import checkersgame.Model.PiecesArray;
-import checkersgame.View.HintButton;
-import checkersgame.View.PieceComponent;
+import checkersgame.Model.*;
+import checkersgame.View.*;
 import java.awt.Component;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Point;
 import java.util.ArrayList;
-import javax.swing.JButton;
 
 /**
  *
@@ -21,15 +16,21 @@ import javax.swing.JButton;
  */
 public class PieceController{
     
+    public static BoardPanel panel;
+    public static PieceComponent pieceComponent;
+    public static PiecesArray pieceArray;
+    public static PieceController pieceController;
+    public static Colour playerTurn;
     private static ArrayList<Component> components;
     
     public PieceController()
-    {
+    {        
         components = new ArrayList<Component>();
         if(PiecesArray.pieces == null)
             return;
         updatePieces();
     }
+    
     public ArrayList<Component> getComponents()
     {
         updatePieces();
@@ -38,8 +39,6 @@ public class PieceController{
 
     public static void updatePieces()
     {
-        BoardController.updatePieces();
-
         for(Piece piece : PiecesArray.getPieces())
         {
             if(piece == null)
@@ -58,5 +57,38 @@ public class PieceController{
             
             components.add(pc);
         }
+    }
+    
+    public static void addPieces()
+    {       
+        pieceController = new PieceController();
+        panel.removeAll();
+        for(Component component : pieceController.getComponents())
+        {
+            component.setVisible(true);
+            panel.add(component);
+        }
+        panel.revalidate();
+        panel.repaint();
+    }
+    
+    public static void movePiece(Piece piece, Point location)
+    {
+        if(piece.getColour() != playerTurn)
+            return;
+        
+        inverseColour();
+        
+        pieceArray.movePiece(piece, location);
+        updatePieces();     
+    }
+    
+    public static void inverseColour()
+    {
+        if(playerTurn == Colour.RED)
+            playerTurn = Colour.BLACK;
+        else
+            playerTurn = Colour.RED;
+        
     }
 }

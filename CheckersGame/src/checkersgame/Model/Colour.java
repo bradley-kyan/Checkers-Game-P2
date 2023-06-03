@@ -1,9 +1,10 @@
 package checkersgame.Model;
 
 /**
- * @author kishanyugendran
+ * @author bradl
  */
 public enum Colour {
     RED,
-    BLACK
+    BLACK;
+    
 }
