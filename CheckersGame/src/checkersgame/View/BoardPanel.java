@@ -27,30 +27,38 @@ public class BoardPanel extends JPanel{
         this.setVisible(true);
         this.setDoubleBuffered(true);
         this.setAlignmentX(CENTER_ALIGNMENT);
+        resize();
     }
     
-    @Override
-    public void paintComponent(Graphics g)
+    private void resize()
     {
-        super.paintComponent(g);
-
-        Dimension parent = this.getParent().getSize();
+        if(this.getParent() == null)
+            return;
+        Dimension parent = this.getParent().getSize(); 
+        
         if(parent.height > parent.width)
         {
-            Dimension d = new Dimension(parent.width-50, parent.width-50);
+            Dimension d = new Dimension(parent.width, parent.width);
             this.setMaximumSize(d);
             this.setPreferredSize(d);
             this.setMinimumSize(d);
         }
         else
         {
-            Dimension d = new Dimension(parent.height-50, parent.height-50);
+            Dimension d = new Dimension(parent.height, parent.height);
             this.setMaximumSize(d);
             this.setPreferredSize(d);
             this.setMinimumSize(d);
         }
         
-        squareSize = new Dimension(this.getSize().width/size, this.getSize().height/size);
+        squareSize = new Dimension(this.getSize().width/size, this.getSize().height/size);     
+    }
+    
+    @Override
+    public void paintComponent(Graphics g)
+    {
+        super.paintComponent(g);
+        resize();
         
         for(int x = 0; x < size; x++)
         {       
