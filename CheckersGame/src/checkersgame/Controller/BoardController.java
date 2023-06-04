@@ -39,7 +39,30 @@ public class BoardController extends PieceController
         
         frame.validate();
         frame.repaint();
-    }  
+    }
+    
+    public BoardController(int size, String replayName)
+    {
+        instanceName = replayName;
+        frame = MenuController.frame;
+        
+        panel = new BoardPanel(size);
+
+        panel.setSize(frame.getSize());       
+        playerTurn = Colour.BLACK;
+
+        pieceArray = new PiecesArray(size);
+        pieceArray.populateBoard(size);
+        pieceArray.updateMoves();
+        
+        addPieces();
+        
+        panel.setVisible(true);
+        frame.add(panel);
+        
+        frame.validate();
+        frame.repaint();
+    }
         
     public static void showHint(Piece piece)
     {

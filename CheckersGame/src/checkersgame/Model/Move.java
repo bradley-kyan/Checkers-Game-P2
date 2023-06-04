@@ -16,6 +16,7 @@ public class Move {
     public int moveOrder;
     public Piece piece;
     public Point moveLocation;
+    public String title;
     
     public Move(Piece piece, Point moveLocation)
     {
@@ -25,5 +26,9 @@ public class Move {
         this.piece = piece;
         this.moveLocation = moveLocation;
         this.moveOrder = moveNumber++;
+    }
+    public Move()
+    {
+        
     }
 }
