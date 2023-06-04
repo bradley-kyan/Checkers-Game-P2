@@ -1,0 +1,20 @@
+Mon Jun 05 02:01:29 NZST 2023 : Apache Derby Network Server - 10.14.2.0 - (1828579) started and ready to accept connections on port 1527
+----------------------------------------------------------------
+Mon Jun 05 02:01:30 NZST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0188-86b6-89ac-fffff126f0fa 
+on database directory C:\Users\bradl\OneDrive\Documents\GitHub\Checkers-P2\Checkers-Game-P2\CheckersGame\Checkers with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+Loaded from file:/C:/Users/bradl/Desktop/db-derby-10.14.2.0-bin/lib/derby.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_202-b08
+user.dir=C:\Users\bradl\Desktop\db-derby-10.14.2.0-bin
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=C:\Users\bradl\OneDrive\Documents\GitHub\Checkers-P2\Checkers-Game-P2\CheckersGame
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Mon Jun 05 02:03:13 NZST 2023: Shutting down Derby engine
+----------------------------------------------------------------
+Mon Jun 05 02:03:13 NZST 2023:
+Shutting down instance a816c00e-0188-86b6-89ac-fffff126f0fa on database directory C:\Users\bradl\OneDrive\Documents\GitHub\Checkers-P2\Checkers-Game-P2\CheckersGame\Checkers with class loader sun.misc.Launcher$AppClassLoader@1d44bcfa 
+----------------------------------------------------------------

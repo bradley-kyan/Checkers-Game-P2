@@ -4,7 +4,8 @@
  */
 package checkersgame.View;
 
-import checkersgame.Controller.BoardController;
+import checkersgame.View.UI.HintUI;
+import checkersgame.Controller.PlayController;
 import checkersgame.Model.LinkedPoint;
 import checkersgame.Model.Piece;
 import java.awt.Dimension;
@@ -54,7 +55,7 @@ public class HintButton extends JButton implements ActionListener{
     public void actionPerformed(ActionEvent e) 
     {
         System.out.println("Hint!");
-        BoardController.movePiece(piece, moveLocation);
-        BoardController.addPieces();
+        PlayController.movePiece(piece, moveLocation);
+        PlayController.addPieces();
     }
 }

@@ -1,83 +1,98 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package checkersgame.Controller;
 
 import checkersgame.Model.*;
 import checkersgame.View.*;
 import java.awt.Component;
-import java.util.Date;
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
+import java.awt.Point;
+import java.util.ArrayList;
 
 /**
+ *
  * @author bradl
  */
-public class BoardController extends PieceController
-{    
-    private static String instanceName;
-    private static Frame frame;
-    /**
-     * Initializes a new checkers board, and populates each side's pieces. 
-     * @param size Number of squares the board will have in both an x and y axis
-     */
-    public BoardController(int size)
-    {                   
-        instanceName = "Game: " + new Date();
-        frame = MenuController.frame;
-        
-        panel = new BoardPanel(size);
-
-        panel.setSize(frame.getSize());       
-        playerTurn = Colour.BLACK;
-
-        pieceArray = new PiecesArray(size);
-        pieceArray.populateBoard(size);
-        pieceArray.updateMoves();
-        
-        addPieces();
-        
-        panel.setVisible(true);
-        frame.add(panel);
-        
-        frame.validate();
-        frame.repaint();
+public class BoardController extends MoveController{
+    
+    protected static String instanceName;
+    public static BoardPanel panel;
+    public static PieceComponent pieceComponent;
+    public static PiecesArray pieceArray;
+    public static BoardController pieceController;
+    public static Colour playerTurn;
+    private static ArrayList<Component> components;
+    
+    public BoardController()
+    {        
+        super(instanceName);
+        components = new ArrayList<Component>();
+        if(PiecesArray.pieces == null)
+            return;
+        updatePieces();
     }
     
-    public BoardController(int size, String replayName)
+    public ArrayList<Component> getComponents()
     {
-        instanceName = replayName;
-        frame = MenuController.frame;
-        
-        panel = new BoardPanel(size);
-
-        panel.setSize(frame.getSize());       
-        playerTurn = Colour.BLACK;
-
-        pieceArray = new PiecesArray(size);
-        pieceArray.populateBoard(size);
-        pieceArray.updateMoves();
-        
-        addPieces();
-        
-        panel.setVisible(true);
-        frame.add(panel);
-        
-        frame.validate();
-        frame.repaint();
+        updatePieces();
+        return this.components;
     }
-        
-    public static void showHint(Piece piece)
+
+    public static void updatePieces()
     {
+        for(Piece piece : PiecesArray.getPieces())
+        {
+            if(piece == null)
+                continue;
+        }
+        if(components == null)
+            return;
+        
+        components = new ArrayList<Component>();
+        
+        for(Piece piece : PiecesArray.getPieces())
+        {
+            if(piece == null)
+                continue;
+            PieceComponent pc = new PieceComponent(piece);
+            
+            components.add(pc);
+        }
+    }
+    
+    public static void addPieces()
+    {       
+        pieceController = new BoardController();
+        panel.removeAll();
         for(Component component : pieceController.getComponents())
-        {            
-            if(((PieceComponent)component).piece.equals(piece))
-            {
-                for(LinkedPoint lp : piece.moves)
-                {       
-                    HintButton hb = new HintButton(lp);
-                    panel.add(hb);
-                }
-            }
+        {
+            component.setVisible(true);
+            panel.add(component);
         }
         panel.revalidate();
         panel.repaint();
+    }
+    
+    public static void movePiece(Piece piece, Point location)
+    {
+        if(piece.getColour() != playerTurn)
+            return;
+        
+        inverseColour();
+        
+        if(pieceArray.movePiece(piece, location))
+            addMove(piece, location);
+        
+        updatePieces();     
+    }
+    
+    public static void inverseColour()
+    {
+        if(playerTurn == Colour.RED)
+            playerTurn = Colour.BLACK;
+        else
+            playerTurn = Colour.RED;
+        
     }
 }

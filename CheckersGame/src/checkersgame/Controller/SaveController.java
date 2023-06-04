@@ -8,6 +8,9 @@ import checkersgame.Model.Database;
 import checkersgame.Model.Move;
 import checkersgame.Model.MovesQueue;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -32,17 +35,26 @@ public abstract class SaveController extends Database{
         query = "SELECT * FROM REPLAYS WHERE TITLE = '" + title + "'";
         
         ResultSet rs = this.query(query);
-        if(rs == null)
-        {
-            query = "INSERT INTO REPLAYS (ID, Title)"
-                    + "VALUES(seq_move.nextval, " + title + ")";
-
-            this.query(query);          
-        } 
+        try {
+            if(!rs.first())
+            {
+                query = "INSERT INTO REPLAYS (ID, Title)"
+                        + "VALUES(NEXT VALUE FOR seq_move, '" + title + "')";
+                
+                this.query(query); 
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(SaveController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
-        query = "INSERT INTO ReplayData VALUES("
-                + "(select ID from Replays Where title = " + title + ")," + moveOrder + ", "
-                + pieceID + ", " + moveX + ", " + moveY + ")";
+        query = "INSERT INTO ReplayData VALUES(\n"
+                + "(select ID from Replays Where title = '" + title + "'), \n" 
+                + moveOrder + ", \n"
+                + pieceID + ", \n" 
+                + moveX + ", \n" 
+                + moveY + ")";
+        this.query(query);
         
     }
     protected ResultSet getReplaysList()

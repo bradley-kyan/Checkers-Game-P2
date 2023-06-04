@@ -11,28 +11,31 @@ import checkersgame.Model.PiecesArray;
 import java.awt.Point;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author bradl
  */
-public class MoveController extends SaveController{
+public abstract class MoveController extends SaveController{
     
+    private static String title;
     private static MovesQueue movesQueue;
-    public MoveController()
+    public MoveController(String title)
     {
-        super();
-        movesQueue = new MovesQueue();
+        if(movesQueue == null)
+            movesQueue = new MovesQueue();
+        MoveController.title = title;
     }
     
-    public static void addMove(String title, Piece piece, Point moveLoaction)
+    public static void addMove(Piece piece, Point moveLoaction)
     {
         Move currentMove = new Move(piece, moveLoaction);
         currentMove.title = title;
         
         movesQueue.add(currentMove);
+        MoveController mc = new MoveController(title) {};
+        mc.saveToDB();
+        
     }
     public void saveToDB()
     {

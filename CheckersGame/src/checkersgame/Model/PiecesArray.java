@@ -131,10 +131,10 @@ public class PiecesArray {
      * @param location New location of piece
      * @see LinkedPoint.java
      */
-    public void movePiece(Piece piece, Point location)
+    public boolean movePiece(Piece piece, Point location)
     {
         ArrayList<LinkedPoint> points = piece.moves;
-
+        boolean success = false;
         for(LinkedPoint lp : points)
         {
             if(lp.toMove.equals(location))
@@ -144,9 +144,11 @@ public class PiecesArray {
                     this.pieces.remove(this.getPiece(p));
                 }
                 piece.position.setLocation(lp.toMove);
+                success = true;
             }
         }
         this.updateMoves();
+        return success;
     }
 
     /**

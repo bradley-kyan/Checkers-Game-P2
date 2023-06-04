@@ -6,6 +6,7 @@ package checkersgame.Model;
 
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  *
@@ -17,7 +18,7 @@ public class MovesQueue{
     
     public MovesQueue()
     {
-        queue = new LinkedList<Move>();
+        queue = new ConcurrentLinkedQueue<Move>();
     } 
     public void add(Move move)
     {

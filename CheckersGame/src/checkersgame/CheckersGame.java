@@ -4,7 +4,7 @@
  */
 package checkersgame;
 
-import checkersgame.Controller.BoardController;
+import checkersgame.Controller.PlayController;
 import checkersgame.Controller.MenuController;
 import java.util.Scanner;
 

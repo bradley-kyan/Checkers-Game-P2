@@ -17,9 +17,7 @@ import java.sql.Statement;
 public class Database {
     
     private static Connection conn;
-    private final String url = "jdbc:derby:Checkers; create=true";
-    private final String username = "checkers";
-    private final String password = "checkers123";
+    private final String url = "jdbc:derby:CheckersDB; create=true";
     
     public Database()
     {
@@ -31,7 +29,7 @@ public class Database {
     {
         try
         {
-            conn = DriverManager.getConnection(url, url, password);
+            conn = DriverManager.getConnection(url);
         }
         catch(SQLException e)
         {
@@ -41,20 +39,22 @@ public class Database {
     
     public void createTables()
     {
-        ResultSet rs = this.query("SELECT * FROM REPLAYS");
+        ResultSet rs = this.query("SELECT TABLENAME \n" +
+                                    "FROM SYS.SYSTABLES \n" +
+                                    "WHERE TABLENAME = 'REPLAYS'");
         try {
-            if(rs.wasNull())
+            if(rs == null || !rs.first()){
                 this.query("CREATE SEQUENCE seq_move\n" +
                         "MINVALUE 1\n" +
-                        "START WITH 1\n" +
-                        "INCREMENT BY 1;\n" +
-                        "\n" +
-                        "CREATE TABLE Replays(\n" +
+                        "START WITH 1\n"
+                        + "INCREMENT BY 1");
+
+                this.query("CREATE TABLE Replays(\n" +
                         "    ID int NOT NULL PRIMARY KEY,\n" +
                         "    Title varchar(255) NOT NULL\n" +
-                        ");\n" +
-                        "\n" +
-                        "CREATE TABLE ReplayData(\n" +
+                        ")");
+
+                this.query("CREATE TABLE ReplayData(\n" +
                         "    ID int NOT NULL,\n" +
                         "    ReplayOrder int NOT NULL,\n" +
                         "    Piece int NOT NULL,\n" +
@@ -62,7 +62,8 @@ public class Database {
                         "    NewPositionY int NOT NULL,\n" +
                         "    CONSTRAINT FK_ReplayID FOREIGN KEY (ID)\n" +
                         "    REFERENCES Replays(ID)\n" +
-                        ")");
+                        ")");            
+            }
         } 
         catch (SQLException ex) 
         {
@@ -71,10 +72,12 @@ public class Database {
     }
     
     public ResultSet query(String query)
-    {
-        try {      
-            Statement statement = conn.createStatement();
-            return statement.executeQuery(query);
+    {       
+        try 
+        {
+            Statement statement = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            statement.execute(query);
+            return statement.getResultSet();
         } 
         catch (SQLException ex) 
         {
