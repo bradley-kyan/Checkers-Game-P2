@@ -13,7 +13,6 @@ public class Piece {
     private Integer ID;
     public Point position;
     public int direction;
-    private static Integer pieceNum;
     public ArrayList<LinkedPoint> moves;
     
     public Character hintIdentifier;
@@ -24,7 +23,7 @@ public class Piece {
      * @param rank the rank of the piece (king,pawn)
      * @param pos the initial position of the piece
      */
-    public Piece(Colour colour, Rank rank, Point pos)
+    public Piece(Colour colour, Rank rank, Point pos, int ID)
     {
         this.colour = colour;
         this.rank = rank;
@@ -33,10 +32,8 @@ public class Piece {
             direction = 1;
         else
             direction = -1;
-        
-        if(pieceNum == null)
-            this.pieceNum = 0;
-        this.ID = pieceNum++;
+
+        this.ID = ID;
         
         this.position = pos;
     }

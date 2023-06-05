@@ -5,7 +5,7 @@
 package checkersgame.View;
 
 import checkersgame.View.UI.PieceUI;
-import checkersgame.Controller.PlayController;
+import checkersgame.Controller.PlayableGameController;
 import checkersgame.Model.Colour;
 import checkersgame.Model.Piece;
 import java.awt.Color;
@@ -60,8 +60,8 @@ public class PieceComponent extends JButton implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e)
     {        
-        PlayController.addPieces();
-        PlayController.showHint(piece);
+        PlayableGameController.addPieces();
+        PlayableGameController.showHint(piece);
         System.out.println("Press!"); 
     }
 }

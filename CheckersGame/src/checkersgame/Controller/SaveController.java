@@ -7,6 +7,8 @@ package checkersgame.Controller;
 import checkersgame.Model.Database;
 import checkersgame.Model.Move;
 import checkersgame.Model.MovesQueue;
+import checkersgame.Model.PiecesArray;
+import java.awt.Point;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -27,7 +29,7 @@ public abstract class SaveController extends Database{
     {
         String query;
         String title = move.title;
-        int pieceID = move.piece.getID();
+        int pieceID = move.pieceID;
         int moveX = move.moveLocation.x;
         int moveY = move.moveLocation.y;
         int moveOrder = move.moveOrder;
@@ -68,5 +70,33 @@ public abstract class SaveController extends Database{
                 " ORDER BY ReplayOrder ASC";
         return this.query(query);
     }
-    protected abstract MovesQueue getMoves(int replayID);
+    
+    protected MovesQueue getMoves(int replayID) {
+        
+        PiecesArray pa = new PiecesArray(8);
+        MovesQueue queue = new MovesQueue();
+        
+        ResultSet rs = getReplay(replayID);
+        try 
+        {
+            while(rs.next()) 
+            {
+                Move move = new Move();
+                Point point = new Point();
+
+                move.pieceID = rs.getInt("Piece");
+                point.x = rs.getInt("NewPositionX");
+                point.y = rs.getInt("NewPositionY");
+                move.moveOrder = rs.getInt("ReplayOrder");
+                move.moveLocation = point;
+                queue.add(move);
+
+            }
+        } catch (SQLException ex) 
+        {
+            System.out.println(ex);
+        }
+        
+        return queue;
+    }
 }

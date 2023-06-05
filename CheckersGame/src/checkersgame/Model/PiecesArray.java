@@ -19,6 +19,7 @@ public class PiecesArray {
     public PiecesArray(int size)
     {
         this.dimension = size;
+        this.populateBoard(size);
     }
     
     /**
@@ -28,6 +29,7 @@ public class PiecesArray {
     public void populateBoard(int dimension)
     {
         this.pieces = new ArrayList<Piece>();
+        int pieceNum = 0;
         for(int y = 0; y < 3; y++)
         {
             for(int x = 0; x < dimension; x++)
@@ -35,7 +37,7 @@ public class PiecesArray {
                 if(y == 0 || y == 2)
                 {
                     pieces.add(new Piece(Colour.RED, Rank.PAWN, 
-                        new Point(x++, y)));
+                        new Point(x++, y), pieceNum++));
                 }
                 else
                 {
@@ -43,7 +45,7 @@ public class PiecesArray {
                         continue;
 
                     pieces.add(new Piece(Colour.RED, Rank.PAWN,
-                        new Point(x, y)));
+                        new Point(x, y), pieceNum++));
                 }
             }
         }
@@ -55,7 +57,7 @@ public class PiecesArray {
                 if(y == dimension - 2)
                 {
                     pieces.add(new Piece(Colour.BLACK, Rank.PAWN, 
-                        new Point(x++, y)));
+                        new Point(x++, y), pieceNum++));
                 }
                 else
                 {
@@ -63,7 +65,7 @@ public class PiecesArray {
                         continue;
 
                     pieces.add(new Piece(Colour.BLACK, Rank.PAWN,
-                        new Point(x, y)));
+                        new Point(x, y), pieceNum++));
                 }
             }
         }      
@@ -78,6 +80,10 @@ public class PiecesArray {
         {
             p.moves = this.getMoves(p.position);
         }
+    }
+    public void updateMoves(Piece p)
+    {
+        p.moves = this.getMoves(p.position);
     }
 
     /**
@@ -133,8 +139,11 @@ public class PiecesArray {
      */
     public boolean movePiece(Piece piece, Point location)
     {
+        piece = this.getPiece(piece.getPos());
+        
         ArrayList<LinkedPoint> points = piece.moves;
         boolean success = false;
+        
         for(LinkedPoint lp : points)
         {
             if(lp.toMove.equals(location))

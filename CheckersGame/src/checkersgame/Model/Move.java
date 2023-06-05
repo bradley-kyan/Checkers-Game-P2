@@ -14,7 +14,7 @@ public class Move {
     
     private static Integer moveNumber;
     public int moveOrder;
-    public Piece piece;
+    public int pieceID;
     public Point moveLocation;
     public String title;
     
@@ -23,7 +23,7 @@ public class Move {
         if(moveNumber == null)
             moveNumber = 0;
         
-        this.piece = piece;
+        this.pieceID = piece.getID();
         this.moveLocation = moveLocation;
         this.moveOrder = moveNumber++;
     }

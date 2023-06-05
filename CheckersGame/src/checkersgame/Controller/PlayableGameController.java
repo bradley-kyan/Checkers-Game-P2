@@ -10,14 +10,14 @@ import javax.swing.JFrame;
 /**
  * @author bradl
  */
-public class PlayController extends BoardController
+public class PlayableGameController extends BoardController
 {    
     protected static Frame frame;
     /**
      * Initializes a new checkers board, and populates each side's pieces. 
      * @param size Number of squares the board will have in both an x and y axis
      */
-    public PlayController(int size)
+    public PlayableGameController(int size)
     {     
         super();
         instanceName = "Game: " + new Date();
