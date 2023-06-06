@@ -39,7 +39,6 @@ public class BoardController extends MoveController {
 
         sidePanelFrame = new SidePanel(this);
         updatePieces();
-
     }
 
     public ArrayList<Component> getComponents()

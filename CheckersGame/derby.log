@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue Jun 06 18:29:17 NZST 2023:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0188-8f65-405a-00000dca6538 
+Tue Jun 06 23:29:31 NZST 2023:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0188-9078-1ff8-00000dca7ea0 
 on database directory C:\Users\bradl\OneDrive\Documents\GitHub\Checkers-P2\Checkers-Game-P2\CheckersGame\CheckersDB with class loader sun.misc.Launcher$AppClassLoader@5c647e05 
 Loaded from file:/C:/Users/bradl/OneDrive/Documents/GitHub/Checkers-P2/Checkers-Game-P2/CheckersGame/lib/derby.jar
 java.vendor=Oracle Corporation

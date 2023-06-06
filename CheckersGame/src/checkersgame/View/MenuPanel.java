@@ -57,7 +57,6 @@ public class MenuPanel extends JPanel {
 
         button.setFont(font);
         button.setVisible(true);
-        //button.setUI(new MenuButtonUI());
 
         return button;
     }
