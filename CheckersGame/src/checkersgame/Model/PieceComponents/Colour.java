@@ -1,4 +1,4 @@
-package checkersgame.Model;
+package checkersgame.Model.PieceComponents;
 
 /**
  * @author bradl

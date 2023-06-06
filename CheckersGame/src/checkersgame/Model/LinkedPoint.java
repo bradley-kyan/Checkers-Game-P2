@@ -4,6 +4,7 @@
  */
 package checkersgame.Model;
 
+import checkersgame.Model.PieceComponents.Piece;
 import java.awt.Point;
 import java.util.ArrayList;
 

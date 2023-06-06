@@ -6,8 +6,8 @@ package checkersgame.View;
 
 import checkersgame.View.UI.PieceUI;
 import checkersgame.Controller.PlayableGameController;
-import checkersgame.Model.Colour;
-import checkersgame.Model.Piece;
+import checkersgame.Model.PieceComponents.Colour;
+import checkersgame.Model.PieceComponents.Piece;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;

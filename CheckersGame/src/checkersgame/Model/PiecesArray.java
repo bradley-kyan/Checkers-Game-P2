@@ -4,6 +4,9 @@
  */
 package checkersgame.Model;
 
+import checkersgame.Model.PieceComponents.Rank;
+import checkersgame.Model.PieceComponents.Piece;
+import checkersgame.Model.PieceComponents.Colour;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Iterator;

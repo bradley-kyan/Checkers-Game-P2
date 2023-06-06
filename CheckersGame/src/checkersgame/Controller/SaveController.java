@@ -5,7 +5,7 @@
 package checkersgame.Controller;
 
 import checkersgame.Model.Database;
-import checkersgame.Model.Move;
+import checkersgame.Model.PieceComponents.Move;
 import checkersgame.Model.MovesQueue;
 import checkersgame.Model.PiecesArray;
 import java.awt.Point;

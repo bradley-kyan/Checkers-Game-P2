@@ -6,9 +6,9 @@ package checkersgame.View;
 
 import checkersgame.Controller.BoardController;
 import checkersgame.Controller.ReplayGameController;
-import checkersgame.Model.Colour;
-import static checkersgame.Model.Colour.BLACK;
-import static checkersgame.Model.Colour.RED;
+import checkersgame.Model.PieceComponents.Colour;
+import static checkersgame.Model.PieceComponents.Colour.BLACK;
+import static checkersgame.Model.PieceComponents.Colour.RED;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;

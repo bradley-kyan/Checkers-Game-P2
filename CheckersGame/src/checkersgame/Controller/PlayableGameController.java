@@ -1,5 +1,7 @@
 package checkersgame.Controller;
 
+import checkersgame.Model.PieceComponents.Piece;
+import checkersgame.Model.PieceComponents.Colour;
 import checkersgame.Model.*;
 import checkersgame.View.*;
 import java.awt.Component;

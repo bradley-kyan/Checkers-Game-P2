@@ -7,7 +7,7 @@ package checkersgame.View;
 import checkersgame.View.UI.HintUI;
 import checkersgame.Controller.PlayableGameController;
 import checkersgame.Model.LinkedPoint;
-import checkersgame.Model.Piece;
+import checkersgame.Model.PieceComponents.Piece;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;

@@ -4,6 +4,7 @@
  */
 package checkersgame.Model;
 
+import checkersgame.Model.PieceComponents.Move;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 

@@ -4,9 +4,9 @@
  */
 package checkersgame.Controller;
 
-import checkersgame.Model.Move;
+import checkersgame.Model.PieceComponents.Move;
 import checkersgame.Model.MovesQueue;
-import checkersgame.Model.Piece;
+import checkersgame.Model.PieceComponents.Piece;
 import java.awt.Point;
 
 /**

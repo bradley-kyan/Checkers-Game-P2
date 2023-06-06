@@ -1,5 +1,6 @@
-package checkersgame.Model;
+package checkersgame.Model.PieceComponents;
 
+import checkersgame.Model.LinkedPoint;
 import java.awt.Point;
 import java.util.ArrayList;
 
