@@ -45,7 +45,7 @@ public class MenuController implements ActionListener {
         {
             menuPanel.setEnabled(false);
             menuPanel.setVisible(false);
-            board = new PlayableGameController(8);
+            this.board = new PlayableGameController(8);
 
             frame.revalidate();
             frame.repaint();

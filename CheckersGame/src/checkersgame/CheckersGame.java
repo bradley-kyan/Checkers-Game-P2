@@ -5,17 +5,14 @@
 package checkersgame;
 
 import checkersgame.Controller.MenuController;
-import java.util.Scanner;
 
 public class CheckersGame {
-
-    private static Scanner scan;
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args)
     {
-        MenuController menu = new MenuController();
+        new MenuController();
     }
 }

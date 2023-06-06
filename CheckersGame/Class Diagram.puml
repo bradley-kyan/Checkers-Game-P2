@@ -1,0 +1,80 @@
+@startuml
+abstract class checkersgame.Controller.MoveController
+abstract class checkersgame.Controller.SaveController
+class checkersgame.CheckersGame
+class checkersgame.Controller.BoardController
+class checkersgame.Controller.MenuController
+class checkersgame.Controller.PlayableGameController
+class checkersgame.Controller.ReplayGameController
+class checkersgame.Controller.ReplayMenuController
+class checkersgame.Model.Database
+class checkersgame.Model.LinkedPoint
+class checkersgame.Model.MovesQueue
+class checkersgame.Model.PieceComponents.Move
+class checkersgame.Model.PieceComponents.Piece
+class checkersgame.Model.PieceComponents.Player
+class checkersgame.Model.PiecesArray
+class checkersgame.View.BoardPanel
+class checkersgame.View.Frame
+class checkersgame.View.HintButton
+class checkersgame.View.MenuPanel
+class checkersgame.View.PieceButton
+class checkersgame.View.ReplayButtonsPanel
+class checkersgame.View.ReplayMenuPanel
+class checkersgame.View.SidePanel
+class checkersgame.View.UI.HintUI
+class checkersgame.View.UI.MenuButtonUI
+class checkersgame.View.UI.PieceUI
+enum checkersgame.Model.PieceComponents.Colour
+enum checkersgame.Model.PieceComponents.Rank
+checkersgame.Controller.MoveController --|> checkersgame.Controller.SaveController
+checkersgame.Controller.MoveController ..> checkersgame.Model.MovesQueue
+checkersgame.Controller.MoveController ..> checkersgame.Model.PieceComponents.Move
+checkersgame.Controller.MoveController ..> checkersgame.Model.PieceComponents.Piece
+checkersgame.Controller.SaveController --|> checkersgame.Model.Database
+checkersgame.Controller.SaveController ..> checkersgame.Model.MovesQueue
+checkersgame.Controller.SaveController ..> checkersgame.Model.PieceComponents.Move
+checkersgame.Controller.SaveController ..> checkersgame.Model.PiecesArray
+checkersgame.CheckersGame ..> checkersgame.Controller.MenuController
+checkersgame.Controller.BoardController --|> checkersgame.Controller.MoveController
+checkersgame.Controller.BoardController ..> checkersgame.Model.PieceComponents.Piece
+checkersgame.Controller.BoardController ..> checkersgame.Model.PieceComponents.Colour
+checkersgame.Controller.MenuController ..> checkersgame.View.Frame
+checkersgame.Controller.MenuController ..> checkersgame.View.MenuPanel
+checkersgame.Controller.PlayableGameController --|> checkersgame.Controller.BoardController
+checkersgame.Controller.PlayableGameController ..> checkersgame.Model.PieceComponents.Piece
+checkersgame.Controller.PlayableGameController ..> checkersgame.Model.PieceComponents.Colour
+checkersgame.Controller.ReplayGameController --|> checkersgame.Controller.BoardController
+checkersgame.Controller.ReplayGameController ..> checkersgame.Model.MovesQueue
+checkersgame.Controller.ReplayGameController ..> checkersgame.Model.PieceComponents.Move
+checkersgame.Controller.ReplayGameController ..> checkersgame.Model.PieceComponents.Piece
+checkersgame.Controller.ReplayGameController ..> checkersgame.Model.PiecesArray
+checkersgame.Controller.ReplayGameController ..> checkersgame.View.BoardPanel
+checkersgame.Controller.ReplayGameController ..> checkersgame.View.Frame
+checkersgame.Controller.ReplayGameController ..> checkersgame.Model.PieceComponents.Colour
+checkersgame.Controller.ReplayMenuController --|> checkersgame.Controller.SaveController
+checkersgame.Controller.ReplayMenuController ..> checkersgame.Model.MovesQueue
+checkersgame.Controller.ReplayMenuController ..> checkersgame.View.ReplayMenuPanel
+checkersgame.Model.LinkedPoint ..> checkersgame.Model.PieceComponents.Piece
+checkersgame.Model.MovesQueue ..> checkersgame.Model.PieceComponents.Move
+checkersgame.Model.PieceComponents.Move ..> checkersgame.Model.PieceComponents.Piece
+checkersgame.Model.PieceComponents.Piece ..> checkersgame.Model.LinkedPoint
+checkersgame.Model.PiecesArray ..> checkersgame.Model.PieceComponents.Piece
+checkersgame.Model.PiecesArray ..> checkersgame.Model.PieceComponents.Colour
+checkersgame.Model.PiecesArray ..> checkersgame.Model.PieceComponents.Rank
+checkersgame.View.HintButton ..> checkersgame.Controller.PlayableGameController
+checkersgame.View.HintButton ..> checkersgame.Model.LinkedPoint
+checkersgame.View.HintButton ..> checkersgame.Model.PieceComponents.Piece
+checkersgame.View.HintButton ..> checkersgame.View.UI.HintUI
+checkersgame.View.MenuPanel ..> checkersgame.Controller.MenuController
+checkersgame.View.PieceButton ..> checkersgame.Controller.PlayableGameController
+checkersgame.View.PieceButton ..> checkersgame.Model.PieceComponents.Piece
+checkersgame.View.PieceButton ..> checkersgame.View.UI.PieceUI
+checkersgame.View.PieceButton ..> checkersgame.Model.PieceComponents.Colour
+checkersgame.View.ReplayButtonsPanel ..> checkersgame.Controller.ReplayGameController
+checkersgame.View.ReplayMenuPanel ..> checkersgame.Controller.MenuController
+checkersgame.View.ReplayMenuPanel ..> checkersgame.Controller.ReplayMenuController
+checkersgame.View.SidePanel ..> checkersgame.Controller.BoardController
+checkersgame.View.SidePanel ..> checkersgame.Controller.ReplayGameController
+checkersgame.View.SidePanel ..> checkersgame.Model.PieceComponents.Colour
+@enduml

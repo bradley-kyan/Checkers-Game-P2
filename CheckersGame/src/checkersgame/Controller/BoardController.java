@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package checkersgame.Controller;
 
 import checkersgame.Model.PieceComponents.Piece;
@@ -44,7 +40,7 @@ public class BoardController extends MoveController {
     public ArrayList<Component> getComponents()
     {
         updatePieces();
-        return this.components;
+        return components;
     }
 
     public static void updatePieces()
@@ -115,6 +111,5 @@ public class BoardController extends MoveController {
         {
             playerTurn = Colour.RED;
         }
-
     }
 }
