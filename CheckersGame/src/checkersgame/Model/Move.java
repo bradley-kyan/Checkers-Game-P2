@@ -11,24 +11,27 @@ import java.awt.Point;
  * @author bradl
  */
 public class Move {
-    
+
     private static Integer moveNumber;
     public int moveOrder;
     public int pieceID;
     public Point moveLocation;
     public String title;
-    
+
     public Move(Piece piece, Point moveLocation)
     {
-        if(moveNumber == null)
+        if (moveNumber == null)
+        {
             moveNumber = 0;
-        
+        }
+
         this.pieceID = piece.getID();
         this.moveLocation = moveLocation;
         this.moveOrder = moveNumber++;
     }
+
     public Move()
     {
-        
+
     }
 }

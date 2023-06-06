@@ -4,7 +4,6 @@
  */
 package checkersgame.Model;
 
-import checkersgame.Model.Piece;
 import java.awt.Point;
 import java.util.ArrayList;
 
@@ -13,17 +12,17 @@ import java.util.ArrayList;
  * @author bradl
  */
 public class LinkedPoint {
-    
+
     public Point toMove; //Move location
     public Piece origin; //Piece which this move is for
     public ArrayList<Point> toBeRemoved; //Pieces to be removed
-    
+
     /**
-     * Initializes the object which will contain a Pieces valid moves, and all 
+     * Initializes the object which will contain a Pieces valid moves, and all
      * pieces that will be removed in the process.
      */
     public LinkedPoint()
     {
         this.toBeRemoved = new ArrayList<Point>();
-    }  
+    }
 }

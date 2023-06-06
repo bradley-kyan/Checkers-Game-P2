@@ -6,5 +6,5 @@ package checkersgame.Model;
 public enum Colour {
     RED,
     BLACK;
-    
+
 }

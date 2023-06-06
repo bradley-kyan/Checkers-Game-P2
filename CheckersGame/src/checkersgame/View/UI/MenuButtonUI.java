@@ -4,7 +4,6 @@
  */
 package checkersgame.View.UI;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
@@ -14,9 +13,10 @@ import javax.swing.plaf.basic.BasicButtonUI;
  *
  * @author bradl
  */
-public class MenuButtonUI extends BasicButtonUI{
+public class MenuButtonUI extends BasicButtonUI {
+
     @Override
-    public void paint(Graphics g, JComponent c) 
+    public void paint(Graphics g, JComponent c)
     {
         int width = c.getWidth();
         int height = c.getHeight();

@@ -15,7 +15,8 @@ import javax.swing.JButton;
  *
  * @author bradl
  */
-public class MenuController implements ActionListener{
+public class MenuController implements ActionListener {
+
     private PlayableGameController board;
     public static Frame frame;
     private MenuPanel menuPanel;
@@ -29,35 +30,36 @@ public class MenuController implements ActionListener{
         menuPanel = new MenuPanel(this);
         replayMenu = new ReplayMenuController(this);
         frame.add(menuPanel);
-        
-        
+
         frame.validate();
         frame.repaint();
         //board = new PlayableGameController(8, frame);
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
-        JButton o = (JButton)e.getSource();
-        
-        if(o.getName() == "Play")
+    public void actionPerformed(ActionEvent e)
+    {
+        JButton o = (JButton) e.getSource();
+
+        if (o.getName() == "Play")
         {
             menuPanel.setEnabled(false);
             menuPanel.setVisible(false);
             board = new PlayableGameController(8);
+
             frame.revalidate();
             frame.repaint();
-        }    
-        if(o.getName() == "Replays")
+        }
+        if (o.getName() == "Replays")
         {
             menuPanel.setEnabled(false);
             menuPanel.setVisible(false);
-            
+
             frame.add(replayMenu.replayPanel);
-            
+
             replayMenu.replayPanel.setVisible(true);
             replayMenu.replayPanel.setEnabled(true);
-            
+
             frame.revalidate();
             frame.repaint();
         }

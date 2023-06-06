@@ -20,35 +20,38 @@ import javax.swing.JButton;
  *
  * @author bradl
  */
-public class PieceComponent extends JButton implements ActionListener{
+public class PieceButton extends JButton implements ActionListener {
 
     public Piece piece;
     private Dimension square;
-    
-    public PieceComponent(Piece piece)
+
+    public PieceButton(Piece piece)
     {
-        this.piece = piece;  
-        this.setVisible(true); 
+        this.piece = piece;
+        this.setVisible(true);
         this.addActionListener(this);
         this.setDoubleBuffered(false);
-        if(piece.getColour() == Colour.RED)
+        if (piece.getColour() == Colour.RED)
+        {
             this.setUI(new PieceUI(Color.RED));
+        }
         else
+        {
             this.setUI(new PieceUI(Color.BLACK));
+        }
     }
-    
+
     @Override
     public void paintComponent(Graphics g)
-    {   
+    {
         Graphics2D g2 = (Graphics2D) g;
         super.paintComponent(g2);
         square = BoardPanel.squareSize;
-        
+
         int posx = piece.position.x * square.width;
         int posy = piece.position.y * square.height;
         int width = square.width;
         int height = square.height;
-        
 
         this.setLocation(posx, posy);
         this.setSize(width, height);
@@ -56,12 +59,12 @@ public class PieceComponent extends JButton implements ActionListener{
 
         repaint();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e)
-    {        
+    {
         PlayableGameController.addPieces();
         PlayableGameController.showHint(piece);
-        System.out.println("Press!"); 
+        System.out.println("Press!");
     }
 }

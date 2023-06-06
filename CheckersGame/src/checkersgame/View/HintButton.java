@@ -20,11 +20,11 @@ import javax.swing.JButton;
  *
  * @author bradl
  */
-public class HintButton extends JButton implements ActionListener{
-    
+public class HintButton extends JButton implements ActionListener {
+
     public Piece piece;
     private Point moveLocation;
-    
+
     public HintButton(LinkedPoint lp)
     {
         this.piece = lp.origin;
@@ -40,9 +40,9 @@ public class HintButton extends JButton implements ActionListener{
         this.setContentAreaFilled(false);
         Graphics2D g2 = (Graphics2D) g;
         super.paintComponent(g2);
-        
+
         Dimension square = BoardPanel.squareSize;
-        
+
         int posx = moveLocation.x * square.width;
         int posy = moveLocation.y * square.height;
         int width = square.width;
@@ -50,9 +50,9 @@ public class HintButton extends JButton implements ActionListener{
 
         this.setBounds(posx, posy, width, height);
     }
-    
+
     @Override
-    public void actionPerformed(ActionEvent e) 
+    public void actionPerformed(ActionEvent e)
     {
         System.out.println("Hint!");
         PlayableGameController.movePiece(piece, moveLocation);

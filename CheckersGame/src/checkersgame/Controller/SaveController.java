@@ -18,13 +18,13 @@ import java.util.logging.Logger;
  *
  * @author bradl
  */
-public abstract class SaveController extends Database{
-   
+public abstract class SaveController extends Database {
+
     public SaveController()
     {
         super();
     }
-    
+
     protected void save(Move move)
     {
         String query;
@@ -33,53 +33,59 @@ public abstract class SaveController extends Database{
         int moveX = move.moveLocation.x;
         int moveY = move.moveLocation.y;
         int moveOrder = move.moveOrder;
-        
+
         query = "SELECT * FROM REPLAYS WHERE TITLE = '" + title + "'";
-        
+
         ResultSet rs = this.query(query);
-        try {
-            if(!rs.first())
+        try
+        {
+            if (!rs.first())
             {
                 query = "INSERT INTO REPLAYS (ID, Title)"
                         + "VALUES(NEXT VALUE FOR seq_move, '" + title + "')";
-                
-                this.query(query); 
-                
+
+                this.query(query);
+
             }
-        } catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             Logger.getLogger(SaveController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         query = "INSERT INTO ReplayData VALUES(\n"
-                + "(select ID from Replays Where title = '" + title + "'), \n" 
+                + "(select ID from Replays Where title = '" + title + "'), \n"
                 + moveOrder + ", \n"
-                + pieceID + ", \n" 
-                + moveX + ", \n" 
+                + pieceID + ", \n"
+                + moveX + ", \n"
                 + moveY + ")";
         this.query(query);
-        
+
     }
+
     protected ResultSet getReplaysList()
     {
         String query = "SELECT * FROM Replays";
         return this.query(query);
     }
+
     protected ResultSet getReplay(int replayID)
     {
-        String query = "SELECT * FROM ReplayData WHERE ID = " + replayID +
-                " ORDER BY ReplayOrder ASC";
+        String query = "SELECT * FROM ReplayData WHERE ID = " + replayID
+                + " ORDER BY ReplayOrder ASC";
         return this.query(query);
     }
-    
-    protected MovesQueue getMoves(int replayID) {
-        
+
+    protected MovesQueue getMoves(int replayID)
+    {
+
         PiecesArray pa = new PiecesArray(8);
         MovesQueue queue = new MovesQueue();
-        
+
         ResultSet rs = getReplay(replayID);
-        try 
+        try
         {
-            while(rs.next()) 
+            while (rs.next())
             {
                 Move move = new Move();
                 Point point = new Point();
@@ -92,11 +98,12 @@ public abstract class SaveController extends Database{
                 queue.add(move);
 
             }
-        } catch (SQLException ex) 
+        }
+        catch (SQLException ex)
         {
             System.out.println(ex);
         }
-        
+
         return queue;
     }
 }

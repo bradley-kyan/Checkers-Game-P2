@@ -4,27 +4,18 @@
  */
 package checkersgame;
 
-import checkersgame.Controller.PlayableGameController;
 import checkersgame.Controller.MenuController;
 import java.util.Scanner;
 
 public class CheckersGame {
 
     private static Scanner scan;
-    
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
-        runGame();
-    }
-    
-    /**
-     * This method runs the checkers game by calling functions from multiple classes. This also displays some generic messages
-     * such as requests for username and board size.
-     */
-    public static void runGame()
-    {    
+    public static void main(String[] args)
+    {
         MenuController menu = new MenuController();
     }
 }

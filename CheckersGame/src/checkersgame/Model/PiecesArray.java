@@ -13,6 +13,7 @@ import java.util.Iterator;
  * @author bradl
  */
 public class PiecesArray {
+
     private static int dimension;
     public static ArrayList<Piece> pieces;
 
@@ -21,66 +22,72 @@ public class PiecesArray {
         this.dimension = size;
         this.populateBoard(size);
     }
-    
+
     /**
      * Populates the board with the correct placement and number of pieces.
+     *
      * @param dimension Size of the board
      */
     public void populateBoard(int dimension)
     {
         this.pieces = new ArrayList<Piece>();
         int pieceNum = 0;
-        for(int y = 0; y < 3; y++)
+        for (int y = 0; y < 3; y++)
         {
-            for(int x = 0; x < dimension; x++)
+            for (int x = 0; x < dimension; x++)
             {
-                if(y == 0 || y == 2)
+                if (y == 0 || y == 2)
                 {
-                    pieces.add(new Piece(Colour.RED, Rank.PAWN, 
-                        new Point(x++, y), pieceNum++));
+                    pieces.add(new Piece(Colour.RED, Rank.PAWN,
+                            new Point(x++, y), pieceNum++));
                 }
                 else
                 {
-                    if(x++ >= dimension)
+                    if (x++ >= dimension)
+                    {
                         continue;
+                    }
 
                     pieces.add(new Piece(Colour.RED, Rank.PAWN,
-                        new Point(x, y), pieceNum++));
+                            new Point(x, y), pieceNum++));
                 }
             }
         }
 
-        for(int y = dimension - 1; y > dimension - 4; y--)
+        for (int y = dimension - 1; y > dimension - 4; y--)
         {
-            for(int x = 0; x < dimension; x++)
+            for (int x = 0; x < dimension; x++)
             {
-                if(y == dimension - 2)
+                if (y == dimension - 2)
                 {
-                    pieces.add(new Piece(Colour.BLACK, Rank.PAWN, 
-                        new Point(x++, y), pieceNum++));
+                    pieces.add(new Piece(Colour.BLACK, Rank.PAWN,
+                            new Point(x++, y), pieceNum++));
                 }
                 else
                 {
-                    if(x++ >= dimension)
+                    if (x++ >= dimension)
+                    {
                         continue;
+                    }
 
                     pieces.add(new Piece(Colour.BLACK, Rank.PAWN,
-                        new Point(x, y), pieceNum++));
+                            new Point(x, y), pieceNum++));
                 }
             }
-        }      
+        }
     }
 
     /**
-     * 
+     *
      */
     public void updateMoves()
     {
-        for(Piece p : pieces)
+        for (Piece p : pieces)
         {
             p.moves = this.getMoves(p.position);
         }
     }
+
     public void updateMoves(Piece p)
     {
         p.moves = this.getMoves(p.position);
@@ -88,6 +95,7 @@ public class PiecesArray {
 
     /**
      * Finds a piece that is on the board which has the input ID
+     *
      * @param ID ID of a piece
      * @return Piece object or null if no matching ID
      */
@@ -95,33 +103,39 @@ public class PiecesArray {
     {
         Iterator it = this.pieces.iterator();
 
-        while(it.hasNext())
+        while (it.hasNext())
         {
             Piece p = (Piece) it.next();
 
-            if(p.getID() == ID)
+            if (p.getID() == ID)
+            {
                 return p;
+            }
         }
-        return null; 
+        return null;
     }
 
     /**
      * Checks piece list and gets the Piece that is in the same Point location.
+     *
      * @param point Board location
      * @return Piece object or null if no piece is found at specified location
      */
     public Piece getPiece(Point point)
     {
-        for(Piece p : pieces)
+        for (Piece p : pieces)
         {
-            if(p.position.equals(point))
+            if (p.position.equals(point))
+            {
                 return p;
+            }
         }
-        return null; 
+        return null;
     }
 
     /**
      * Gets the ArrayList of pieces.
+     *
      * @return ArrayList<Piece> of all alive pieces
      */
     public static ArrayList<Piece> getPieces()
@@ -130,9 +144,10 @@ public class PiecesArray {
     }
 
     /**
-     * Moves a specified piece to a new location. Location must be valid. Valid moves
-     * are defined in piece's move list (LinkedPoint). If valid move, will update 
-     * piece position and remove all pre-calculated to be removed pieces.
+     * Moves a specified piece to a new location. Location must be valid. Valid
+     * moves are defined in piece's move list (LinkedPoint). If valid move, will
+     * update piece position and remove all pre-calculated to be removed pieces.
+     *
      * @param piece Piece to be moved
      * @param location New location of piece
      * @see LinkedPoint.java
@@ -140,15 +155,15 @@ public class PiecesArray {
     public boolean movePiece(Piece piece, Point location)
     {
         piece = this.getPiece(piece.getPos());
-        
+
         ArrayList<LinkedPoint> points = piece.moves;
         boolean success = false;
-        
-        for(LinkedPoint lp : points)
+
+        for (LinkedPoint lp : points)
         {
-            if(lp.toMove.equals(location))
+            if (lp.toMove.equals(location))
             {
-                for(Point p : lp.toBeRemoved)
+                for (Point p : lp.toBeRemoved)
                 {
                     this.pieces.remove(this.getPiece(p));
                 }
@@ -162,26 +177,30 @@ public class PiecesArray {
 
     /**
      * Filters out the potential moves from the inputted moves. Filtered moves
-     * are moved which a piece can move to. It calculates moved based on if there
-     * is a piece in its move location, or if it can capture the opponent's piece
-     * @param directionalMoves Pre-calculated potential moves on the diagonal axis.
+     * are moved which a piece can move to. It calculates moved based on if
+     * there is a piece in its move location, or if it can capture the
+     * opponent's piece
+     *
+     * @param directionalMoves Pre-calculated potential moves on the diagonal
+     * axis.
      * @param origin Piece which movements are for.
-     * @return ArrayList<LinkedPoint> containing all valid moves a piece can move.
+     * @return ArrayList<LinkedPoint> containing all valid moves a piece can
+     * move.
      * @see getMoves()
      */
     public ArrayList<LinkedPoint> filterMoves(ArrayList<ArrayList<Point>> directionalMoves, Piece origin)
-    {     
+    {
         ArrayList<LinkedPoint> filtered = new ArrayList<LinkedPoint>();
 
-        for(ArrayList<Point> dimension : directionalMoves)
+        for (ArrayList<Point> dimension : directionalMoves)
         {
             LinkedPoint lp = new LinkedPoint();
             Point lastPoint = null;
 
-            for(Point p : dimension)
+            for (Point p : dimension)
             {
                 //There is no piece at the place we want to move to thus we can move
-                if(this.getPiece(p) == null && this.getPiece(lastPoint) == null)
+                if (this.getPiece(p) == null && this.getPiece(lastPoint) == null)
                 {
                     lp.toMove = new Point(p);
                     lp.origin = origin;
@@ -190,17 +209,17 @@ public class PiecesArray {
                 }
 
                 //There is a piece to jump
-                if(this.getPiece(lastPoint) != null)
+                if (this.getPiece(lastPoint) != null)
                 {
                     //Can we move to the next square
-                    if(this.getPiece(p) != null)
+                    if (this.getPiece(p) != null)
                     {
                         break; //We cannot move
                     }
                     else
                     {
                         //Check if the piece to be jumped is the same colour
-                        if(this.getPiece(lastPoint).getColour().equals(origin.getColour()))
+                        if (this.getPiece(lastPoint).getColour().equals(origin.getColour()))
                         {
                             break;
                         }
@@ -213,16 +232,17 @@ public class PiecesArray {
                         filtered.add(lp);
 
                         break;
-                    }          
+                    }
                 }
                 lastPoint = p;
             }
-        }    
+        }
         return filtered;
-    }  
+    }
 
     /**
      * Gets the total number of pieces a colour has on the board.
+     *
      * @param colour Colour to check
      * @return int of remaining pieces
      */
@@ -231,11 +251,13 @@ public class PiecesArray {
         int count = 0;
 
         Iterator it = pieces.iterator();
-        while(it.hasNext())
+        while (it.hasNext())
         {
-            Piece p = (Piece)it.next();
-            if(p.getColour() == colour)
+            Piece p = (Piece) it.next();
+            if (p.getColour() == colour)
+            {
                 count++;
+            }
         }
 
         return count;
@@ -243,7 +265,8 @@ public class PiecesArray {
 
     /**
      * Gets all the moves which a piece can legally move to.
-     * @param origin Piece which movements are for. 
+     *
+     * @param origin Piece which movements are for.
      * @return ArrayList<LinkedPoint> containing moves a piece can move to.
      */
     private ArrayList<LinkedPoint> getMoves(Point origin)
@@ -252,10 +275,11 @@ public class PiecesArray {
     }
 
     /**
-     * Gets all points that are diagonal to input point. 
+     * Gets all points that are diagonal to input point.
+     *
      * @param p Point on the board
-     * @return Multidimensional ArrayList of points in both negative, and positive
-     * diagonal directions to given point.
+     * @return Multidimensional ArrayList of points in both negative, and
+     * positive diagonal directions to given point.
      * @see getMoves()
      */
     private ArrayList<ArrayList<Point>> potentialMoves(Point p)
@@ -266,21 +290,9 @@ public class PiecesArray {
 
         Point tempPos = new Point(p);
 
-        while(++tempPos.x < dimension && tempPos.x >= 0)
+        while (++tempPos.x < dimension && tempPos.x >= 0)
         {
-            if(++tempPos.y < dimension && tempPos.y >= 0)
-            {
-                moves.add(new Point(tempPos));
-            }
-        }        
-        directionalMoves.add(moves);
-
-        moves = new ArrayList<Point>();
-
-        tempPos.setLocation(p);
-        while(++tempPos.x < dimension && tempPos.x >= 0)
-        {
-            if(--tempPos.y < dimension && tempPos.y >= 0)
+            if (++tempPos.y < dimension && tempPos.y >= 0)
             {
                 moves.add(new Point(tempPos));
             }
@@ -290,27 +302,39 @@ public class PiecesArray {
         moves = new ArrayList<Point>();
 
         tempPos.setLocation(p);
-        while(--tempPos.x < dimension && tempPos.x >= 0)
+        while (++tempPos.x < dimension && tempPos.x >= 0)
         {
-            if(--tempPos.y < dimension && tempPos.y >= 0)
+            if (--tempPos.y < dimension && tempPos.y >= 0)
             {
                 moves.add(new Point(tempPos));
             }
-        }       
+        }
         directionalMoves.add(moves);
 
         moves = new ArrayList<Point>();
 
         tempPos.setLocation(p);
-        while(--tempPos.x < dimension && tempPos.x >= 0)
+        while (--tempPos.x < dimension && tempPos.x >= 0)
         {
-            if(++tempPos.y < dimension && tempPos.y >= 0)
+            if (--tempPos.y < dimension && tempPos.y >= 0)
             {
                 moves.add(new Point(tempPos));
             }
-        } 
+        }
+        directionalMoves.add(moves);
+
+        moves = new ArrayList<Point>();
+
+        tempPos.setLocation(p);
+        while (--tempPos.x < dimension && tempPos.x >= 0)
+        {
+            if (++tempPos.y < dimension && tempPos.y >= 0)
+            {
+                moves.add(new Point(tempPos));
+            }
+        }
         directionalMoves.add(moves);
 
         return directionalMoves;
-    }  
+    }
 }

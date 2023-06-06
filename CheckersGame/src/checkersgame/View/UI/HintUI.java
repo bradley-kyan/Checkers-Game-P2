@@ -14,20 +14,22 @@ import javax.swing.plaf.basic.BasicButtonUI;
  *
  * @author bradl
  */
-public class HintUI extends BasicButtonUI{
-    
+public class HintUI extends BasicButtonUI {
+
     @Override
-    public void paint(Graphics g, JComponent c) 
-    {   
-        if(!c.isVisible())
+    public void paint(Graphics g, JComponent c)
+    {
+        if (!c.isVisible())
+        {
             return;
+        }
         int width = c.getWidth();
         int height = c.getHeight();
-        
+
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.lightGray);
-        g2d.fillOval(30, 30, width-60, height -60);
+        g2d.fillOval(30, 30, width - 60, height - 60);
         g2d.setColor(Color.gray);
-        g2d.fillOval(36, 36, width-72, height-72);
+        g2d.fillOval(36, 36, width - 72, height - 72);
     }
 }
