@@ -155,7 +155,7 @@ public class PiecesArray {
     /**
      * Gets the ArrayList of pieces.
      *
-     * @return ArrayList<Piece> of all alive pieces
+     * @return ArrayList-Piece of all alive pieces
      */
     public static ArrayList<Piece> getPieces()
     {
@@ -169,7 +169,7 @@ public class PiecesArray {
      *
      * @param piece Piece to be moved
      * @param location New location of piece
-     * @return 
+     * @return True if successfully moved
      * @see PieceMoves
      */
     public boolean movePiece(Piece piece, Point location)
@@ -204,7 +204,7 @@ public class PiecesArray {
      * @param directionalMoves Pre-calculated potential moves on the diagonal
      * axis.
      * @param origin Piece which movements are for.
-     * @return ArrayList<LinkedPoint> containing all valid moves a piece can
+     * @return ArrayList-LinkedPoint containing all valid moves a piece can
      * move.
      * @see getMoves
      */

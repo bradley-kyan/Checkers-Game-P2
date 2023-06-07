@@ -4,6 +4,7 @@
  */
 package checkersgame.Model.PieceComponents;
 
+import checkersgame.Model.MovesQueue;
 import checkersgame.Model.PieceComponents.Piece;
 import java.awt.Point;
 
@@ -38,8 +39,8 @@ public class Move {
 
     /**
      * Create a new move
-     * @param piece
-     * @param moveLocation
+     * @param piece Piece to be moved
+     * @param moveLocation Piece's moved location
      * @see MovesQueue
      */
     public Move(Piece piece, Point moveLocation)

@@ -171,7 +171,7 @@ public class Player {
     /**
      * Generates a string which depicts a players wins losses and  total pieces captured
      * @return a string with the players wins losses and score.
-     * @return
+     * @return String of wins/losses of a player
      */
 
     public String getWinLossString()
@@ -181,7 +181,7 @@ public class Player {
 
     /**
      *
-     * @return
+     * @return The colour of the player's pieces
      */
     public Colour getColour()
     {
@@ -197,7 +197,7 @@ public class Player {
     }
 
     /**
-     *
+     * Increment the player's win count
      */
     public void win()
     {
@@ -205,7 +205,7 @@ public class Player {
     }
 
     /**
-     *
+     * Increment the player's loss count
      */
     public void lose()
     {
@@ -213,8 +213,8 @@ public class Player {
     }
 
     /**
-     *
-     * @return
+     * Get the score of the player
+     * @return int - The player's capture score
      */
     public int getScore()
     {
@@ -222,8 +222,8 @@ public class Player {
     }
 
     /**
-     *
-     * @return
+     * 
+     * @return The number of wins the player has
      */
     public int getWins()
     {
@@ -232,7 +232,7 @@ public class Player {
 
     /**
      *
-     * @return
+     * @return The number of losses the player has
      */
     public int getLosses()
     {

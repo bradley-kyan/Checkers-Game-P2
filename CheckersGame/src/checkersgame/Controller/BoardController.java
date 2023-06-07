@@ -46,7 +46,8 @@ public class BoardController extends MoveController {
     /**
      * Gets an arrayList of all the current components (pieces) currently on the
      * board.
-     * @return ArrayList<Component>
+     * @return ArrayList of Components
+     * @see Component
      */
     public ArrayList<Component> getComponents()
     {

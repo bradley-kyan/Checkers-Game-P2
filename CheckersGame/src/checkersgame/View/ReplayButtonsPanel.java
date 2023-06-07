@@ -19,8 +19,10 @@ public class ReplayButtonsPanel extends JPanel {
     private BasicArrowButton b;
 
     /**
-     *
-     * @param controller
+     * Create a new panel which will hold a button for moving to the next move
+     * during a game replay.
+     * @param controller The controller that will handle the components ActionEvents.
+     * @see ReplayGameController
      */
     public ReplayButtonsPanel(ReplayGameController controller)
     {
@@ -31,13 +33,14 @@ public class ReplayButtonsPanel extends JPanel {
     }
 
     /**
-     *
-     * @param g
+     * Paints the panel
+     * @param g Graphics component
+     * @see Graphics
+     * @see JPanel
      */
     @Override
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        b.setSize(100, 100);
     }
 }

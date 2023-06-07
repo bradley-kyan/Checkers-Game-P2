@@ -26,7 +26,7 @@ public class MenuController implements ActionListener {
      * Main entry point for starting the program. Will generate a new display frame
      * for the program, and creates a menu for starting a new game, or reviewing previous 
      * game replays.
-     * @see ActionLisener
+     * @see ActionListener
      */
     public MenuController()
     {

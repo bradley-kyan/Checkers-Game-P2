@@ -40,7 +40,7 @@ public class Piece {
      * @param colour the colour of the piece
      * @param rank the rank of the piece (king,pawn)
      * @param pos the initial position of the piece
-     * @param ID
+     * @param ID ID if the piece
      */
     public Piece(Colour colour, Rank rank, Point pos, int ID)
     {
@@ -78,7 +78,7 @@ public class Piece {
     /**
      * Set the hint's character
      * @deprecated 
-     * @param c
+     * @param c Character associated with the hint
      */
     public Piece(char c)
     {
@@ -97,7 +97,7 @@ public class Piece {
 
     /**
      * Set the piece's colour
-     * @param colour
+     * @param colour The piece's new colour
      * @see Colour
      */
     public void setColour(Colour colour)
@@ -117,7 +117,7 @@ public class Piece {
 
     /**
      * Set the piece's rank
-     * @param rank
+     * @param rank The rank of the piece
      * @see Rank
      */
     public void setRank(Rank rank)

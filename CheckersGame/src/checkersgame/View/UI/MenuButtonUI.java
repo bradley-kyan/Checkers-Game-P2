@@ -4,21 +4,31 @@
  */
 package checkersgame.View.UI;
 
+import checkersgame.View.MenuPanel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import javax.swing.JComponent;
 import javax.swing.plaf.basic.BasicButtonUI;
 
 /**
- *
+ * @deprecated 
  * @author bradl
  */
 public class MenuButtonUI extends BasicButtonUI {
 
     /**
-     *
-     * @param g
-     * @param c
+     * @deprecated 
+     * Creates a new UI to be associated with a Menu's buttons
+     * @see MenuPanel
+     */
+    public MenuButtonUI(){};
+    
+    /**
+     * Paints the following to the bounds of the calling component.
+     * @param g Graphics component
+     * @param c Component associated with the UI
+     * @see Graphics
+     * @see JComponent
      */
     @Override
     public void paint(Graphics g, JComponent c)

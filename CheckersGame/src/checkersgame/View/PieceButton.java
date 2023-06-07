@@ -52,7 +52,8 @@ public class PieceButton extends JButton implements ActionListener {
     /**
      * Sets the position of the piece in the correct place on the board. Takes
      * into account the checkerboard square sizes.
-     * @param g
+     * @param g Graphics Component
+     * @see Graphics
      */
     @Override
     public void paintComponent(Graphics g)
@@ -76,7 +77,8 @@ public class PieceButton extends JButton implements ActionListener {
     /**
      * Press action listener for the piece. Will show the move hints associated
      * with the piece.
-     * @param e
+     * @param e Button press action event
+     * @see ActionListener
      */
     @Override
     public void actionPerformed(ActionEvent e)

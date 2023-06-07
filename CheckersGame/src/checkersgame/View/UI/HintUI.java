@@ -4,6 +4,7 @@
  */
 package checkersgame.View.UI;
 
+import checkersgame.View.HintButton;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -17,9 +18,17 @@ import javax.swing.plaf.basic.BasicButtonUI;
 public class HintUI extends BasicButtonUI {
 
     /**
-     *
-     * @param g
-     * @param c
+     * Creates a new UI to be associated with a HintButton
+     * @see HintButton
+     */
+    public HintUI(){}
+    
+    /**
+     * Paints the following to the bounds of the calling component.
+     * @param g Graphics component
+     * @param c Component associated with the UI
+     * @see Graphics
+     * @see JComponent
      */
     @Override
     public void paint(Graphics g, JComponent c)

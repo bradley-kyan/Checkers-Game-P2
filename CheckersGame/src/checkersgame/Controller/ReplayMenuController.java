@@ -26,7 +26,7 @@ public class ReplayMenuController extends SaveManager implements ActionListener 
 
     /**
      * Creates a new panel for displaying all game replays stored in the database.
-     * @param menu
+     * @param menu Menu controller
      * @see SaveManager
      */
     public ReplayMenuController(MenuController menu)
@@ -61,7 +61,7 @@ public class ReplayMenuController extends SaveManager implements ActionListener 
 
     /**
      * Action listener for replay buttons for selecting a new replay to watch.
-     * @param e
+     * @param e Button press action event
      */
     @Override
     public void actionPerformed(ActionEvent e)

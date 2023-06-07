@@ -10,6 +10,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.GridLayout;
+import java.awt.event.ActionListener;
 import javax.swing.AbstractButton;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -28,8 +29,11 @@ public class ReplayMenuPanel extends JPanel {
     private JPanel subPanel;
     
     /**
-     *
-     * @param rmc
+     * Creates a new panel which will display the saved game replays. This panel
+     * shows all replays using a scroll pane.
+     * @param rmc The calling replay controller for ActionEvent handling
+     * @see ActionListener
+     * @see ReplayMenuController
      */
     public ReplayMenuPanel(ReplayMenuController rmc)
     {
@@ -51,8 +55,10 @@ public class ReplayMenuPanel extends JPanel {
     }
     
     /**
-     *
-     * @param g
+     * Paint the panel and set the size of the scroll pane to be relative to the
+     * frame window.
+     * @param g Graphics component
+     * @see Graphics
      */
     @Override
     public void paintComponent(Graphics g)
@@ -64,9 +70,12 @@ public class ReplayMenuPanel extends JPanel {
     }
 
     /**
-     *
-     * @param title
-     * @param ID
+     * Create a new button which will be used for selecting a replay. Sets the
+     * actionListener to that of the controller (rmc).
+     * @param title Title of the replay
+     * @param ID ID of the replay
+     * @see ReplayMenuController
+     * @see ActionListener
      */
     public void addButton(String title, int ID)
     {
