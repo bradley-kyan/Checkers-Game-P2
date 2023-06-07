@@ -13,6 +13,7 @@ import java.util.Date;
 public class PlayableGameController extends BoardController {
 
     protected static Frame frame;
+    public static boolean showHint;
 
     /**
      * Initializes a new checkers board, and populates each side's pieces.
@@ -23,6 +24,7 @@ public class PlayableGameController extends BoardController {
     {
         super();
         instanceName = "Game: " + new Date();
+        showHint = true;
         frame = MenuController.frame;
 
         panel = new BoardPanel(size);
@@ -45,6 +47,9 @@ public class PlayableGameController extends BoardController {
 
     public static void showHint(Piece piece)
     {
+        if(!showHint)
+            return;
+        
         for (Component component : pieceController.getComponents())
         {
             if (((PieceButton) component).piece.equals(piece))

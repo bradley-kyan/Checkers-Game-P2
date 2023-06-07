@@ -30,7 +30,7 @@ public class ReplayGameController extends BoardController implements ActionListe
     public ReplayGameController(MovesQueue mq, int size)
     {
         super();
-
+        PlayableGameController.showHint = false;
         queue = mq;
         panel = new BoardPanel(size);
         frame = MenuController.frame;
