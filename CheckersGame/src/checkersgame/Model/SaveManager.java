@@ -11,14 +11,12 @@ import checkersgame.Model.PiecesArray;
 import java.awt.Point;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author bradl
  */
-public abstract class SaveManager extends Database {
+public class SaveManager extends Database {
 
     /**
      * Creates a new SaveController for communicating with the database.

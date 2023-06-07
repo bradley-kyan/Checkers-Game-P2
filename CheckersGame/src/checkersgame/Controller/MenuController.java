@@ -31,6 +31,7 @@ public class MenuController implements ActionListener {
     public MenuController()
     {
         frame = new Frame();
+        frame.setTitle("Checkers?!?");
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
         menuPanel = new MenuPanel(this); //Create a new menu panel
