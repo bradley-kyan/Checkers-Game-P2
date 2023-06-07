@@ -68,9 +68,10 @@ public class Database {
                         + "    NewPositionX int NOT NULL,\n"
                         + "    NewPositionY int NOT NULL,\n"
                         + "    CONSTRAINT FK_ReplayID FOREIGN KEY (ID)\n"
-                        + "    REFERENCES Replays(ID)\n"
+                        + "    REFERENCES Replays(ID) ON DELETE CASCADE\n"
                         + ")");
             }
+            this.query("DELETE FROM Replays WHERE Title = 'null'");
         }
         catch (SQLException ex)
         {

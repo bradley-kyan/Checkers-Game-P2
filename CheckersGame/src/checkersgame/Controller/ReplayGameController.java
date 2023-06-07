@@ -62,7 +62,7 @@ public class ReplayGameController extends BoardController implements ActionListe
 
         pieceArray.updateMoves();
         Piece p = pieceArray.getPiece(move.pieceID);
-        pieceArray.movePiece(p, move.moveLocation);
+        BoardController.movePiece(p, move.moveLocation);
 
         addPieces();
         frame.invalidate();

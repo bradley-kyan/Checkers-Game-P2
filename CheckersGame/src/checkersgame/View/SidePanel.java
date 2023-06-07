@@ -9,6 +9,7 @@ import checkersgame.Controller.ReplayGameController;
 import checkersgame.Model.PieceComponents.Colour;
 import static checkersgame.Model.PieceComponents.Colour.BLACK;
 import static checkersgame.Model.PieceComponents.Colour.RED;
+import checkersgame.Model.PiecesArray;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -45,11 +46,14 @@ public class SidePanel extends JFrame {
 
         this.setVisible(true);
         panel.setVisible(true);
-
-        panel.add(new CountLabel(BLACK));
+        
+        panel.add(new CurrentMover(BLACK));
         panel.add(new JSeparator());
+        panel.add(new CountLabel(BLACK));
         panel.add(new CountLabel(RED));
+        
         this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+        
         this.add(panel);
         resize();
     }
@@ -82,6 +86,38 @@ public class SidePanel extends JFrame {
 
         this.getContentPane().validate();
         this.getContentPane().repaint();
+    }
+    
+    private class CurrentMover extends JLabel
+    {
+        public CurrentMover(Colour mover)
+        {
+            super();
+            this.setMover(mover);
+        }
+        @Override
+        public void paintComponent(Graphics g)
+        {
+            super.paintComponent(g);
+            
+            if(BoardController.playerTurn == null)
+                return;
+            
+            this.setMover(BoardController.playerTurn);
+        }
+        public void setMover(Colour mover)
+        {
+            if(mover == RED)
+            {
+                this.setText("<html><font color='red'>Red's</font> turn to move!</html>");
+            }
+            else
+            {
+                this.setText("<html>Black's turn to move!</html>");
+            }
+            this.setFont(font);
+            this.repaint();
+        }
     }
 
     private class CountLabel extends JLabel {
