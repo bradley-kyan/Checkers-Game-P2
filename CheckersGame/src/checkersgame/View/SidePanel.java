@@ -49,6 +49,7 @@ public class SidePanel extends JFrame {
         panel.add(new CountLabel(BLACK));
         panel.add(new JSeparator());
         panel.add(new CountLabel(RED));
+        this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         this.add(panel);
         resize();
     }
