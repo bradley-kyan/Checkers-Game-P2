@@ -27,6 +27,10 @@ public class ReplayMenuPanel extends JPanel {
     private JScrollPane scrollArea;
     private JPanel subPanel;
     
+    /**
+     *
+     * @param rmc
+     */
     public ReplayMenuPanel(ReplayMenuController rmc)
     {
         this.rmc = rmc;
@@ -46,6 +50,10 @@ public class ReplayMenuPanel extends JPanel {
         this.add(scrollArea);    
     }
     
+    /**
+     *
+     * @param g
+     */
     @Override
     public void paintComponent(Graphics g)
     {
@@ -55,6 +63,11 @@ public class ReplayMenuPanel extends JPanel {
         scrollArea.setPreferredSize(size);
     }
 
+    /**
+     *
+     * @param title
+     * @param ID
+     */
     public void addButton(String title, int ID)
     {
         JButton button = new JButton(title);

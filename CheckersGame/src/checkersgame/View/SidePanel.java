@@ -32,6 +32,10 @@ public class SidePanel extends JFrame {
     private BoardController controller;
     private static JPanel panel;
 
+    /**
+     *
+     * @param controller
+     */
     public SidePanel(BoardController controller)
     {
         this.controller = controller;
@@ -58,6 +62,10 @@ public class SidePanel extends JFrame {
         resize();
     }
 
+    /**
+     *
+     * @param rgc
+     */
     public void addReplayFunction(ReplayGameController rgc)
     {
         JLabel nextText = new JLabel("Next Move");
@@ -88,13 +96,26 @@ public class SidePanel extends JFrame {
         this.getContentPane().repaint();
     }
     
-    private class CurrentMover extends JLabel
+    /**
+     *
+     */
+    public class CurrentMover extends JLabel
     {
+
+        /**
+         *
+         * @param mover
+         */
         public CurrentMover(Colour mover)
         {
             super();
             this.setMover(mover);
         }
+
+        /**
+         *
+         * @param g
+         */
         @Override
         public void paintComponent(Graphics g)
         {
@@ -105,6 +126,11 @@ public class SidePanel extends JFrame {
             
             this.setMover(BoardController.playerTurn);
         }
+
+        /**
+         *
+         * @param mover
+         */
         public void setMover(Colour mover)
         {
             if(mover == RED)
@@ -120,14 +146,25 @@ public class SidePanel extends JFrame {
         }
     }
 
-    private class CountLabel extends JLabel {
+    /**
+     *
+     */
+    public class CountLabel extends JLabel {
 
+        /**
+         *
+         * @param pieceColour
+         */
         public CountLabel(Colour pieceColour)
         {
             super();
             this.setValues(pieceColour);
         }
 
+        /**
+         *
+         * @param g
+         */
         @Override
         public void paintComponent(Graphics g)
         {

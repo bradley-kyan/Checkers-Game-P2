@@ -6,7 +6,7 @@ package checkersgame.View;
 
 import checkersgame.View.UI.HintUI;
 import checkersgame.Controller.PlayableGameController;
-import checkersgame.Model.LinkedPoint;
+import checkersgame.Model.PieceMoves;
 import checkersgame.Model.PieceComponents.Piece;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -22,18 +22,34 @@ import javax.swing.JButton;
  */
 public class HintButton extends JButton implements ActionListener {
 
+    /**
+     * The piece the hint is associated with.
+     */
     public Piece piece;
     private Point moveLocation;
 
-    public HintButton(LinkedPoint lp)
+    /**
+     * Create a new HintButton for selecting where a piece should move to
+     * @param pieceMoves The moves associated with a piece
+     * @see Piece
+     * @see PieceMoves
+     */
+    public HintButton(PieceMoves pieceMoves)
     {
-        this.piece = lp.origin;
-        this.moveLocation = lp.toMove;
+        this.piece = pieceMoves.origin;
+        this.moveLocation = pieceMoves.toMove;
         this.addActionListener(this);
         this.setVisible(true);
         this.setUI(new HintUI());
     }
 
+    /**
+     * Readjusts the size of the bounds of the button according to the size of the
+     * checkerboard squares.
+     * @param g Graphics component
+     * @see JButton
+     * @see Graphics
+     */
     @Override
     public void paintComponent(Graphics g)
     {
@@ -51,10 +67,15 @@ public class HintButton extends JButton implements ActionListener {
         this.setBounds(posx, posy, width, height);
     }
 
+    /**
+     * Action Listener for all hint buttons which will move the piece to the location
+     * of the button
+     * @param e HintButton's press action event
+     * @see ActionListener
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        System.out.println("Hint!");
         PlayableGameController.movePiece(piece, moveLocation);
         PlayableGameController.addPieces();
     }

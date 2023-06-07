@@ -27,6 +27,11 @@ public class MenuPanel extends JPanel {
     private static Font font;
     private MenuController menu;
 
+    /**
+     * Creates a new panel for displaying welcome menu contents.
+     * @param menu The menu controller for linking ActionListener
+     * @see ActionListener
+     */
     public MenuPanel(MenuController menu)
     {
         this.menu = menu;
@@ -46,10 +51,18 @@ public class MenuPanel extends JPanel {
         this.add(createButton("Replays"));
     }
 
+    /**
+     * Create a new button to be displayed on the menu. All press events are
+     * sent to the controller (MenuController) to be handled there.
+     * @param name The name the button will display
+     * @return JButton - the created button
+     * @see JButton
+     * @see MenuController
+     */
     private JButton createButton(String name)
     {
-        JButton button = new JButton(name);
-        button.addActionListener(menu);
+        JButton button = new JButton(name); //Create the button
+        button.addActionListener(menu); //Set the action listener to the controller
         button.setName(name);
 
         button.setVerticalTextPosition(AbstractButton.CENTER);
@@ -61,6 +74,13 @@ public class MenuPanel extends JPanel {
         return button;
     }
 
+    /**
+     * Update the panel's size to be relative to the frame's size. Keeps the
+     * panel's dimensions to a square, 1:1 ratio.
+     * @param g Graphics component
+     * @see JPanel
+     * @see Graphics
+     */
     @Override
     public void paintComponent(Graphics g)
     {
@@ -83,6 +103,7 @@ public class MenuPanel extends JPanel {
             this.setMinimumSize(d);
         }
 
+        //readjust all components to have the same font.
         for (Component comp : this.getComponents())
         {
             comp.setFont(font.deriveFont(Font.PLAIN, d.width / 16));

@@ -16,6 +16,11 @@ import javax.swing.plaf.basic.BasicButtonUI;
  */
 public class HintUI extends BasicButtonUI {
 
+    /**
+     *
+     * @param g
+     * @param c
+     */
     @Override
     public void paint(Graphics g, JComponent c)
     {

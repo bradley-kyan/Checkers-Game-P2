@@ -13,12 +13,35 @@ import java.awt.Point;
  */
 public class Move {
 
-    private static Integer moveNumber;
+    private static Integer moveNumber; //Increment for movement order
+
+    /**
+     * Move's current placement order
+     */
     public int moveOrder;
+
+    /**
+     * ID of the piece moved
+     * @see Piece
+     */
     public int pieceID;
+
+    /**
+     * The moved location of the piece
+     */
     public Point moveLocation;
+
+    /**
+     * The title of the current game
+     */
     public String title;
 
+    /**
+     * Create a new move
+     * @param piece
+     * @param moveLocation
+     * @see MovesQueue
+     */
     public Move(Piece piece, Point moveLocation)
     {
         if (moveNumber == null)
@@ -31,6 +54,9 @@ public class Move {
         this.moveOrder = moveNumber++;
     }
 
+    /**
+     * Used for manual setting of values
+     */
     public Move()
     {
 

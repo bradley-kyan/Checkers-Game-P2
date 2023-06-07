@@ -22,26 +22,37 @@ public class MenuController implements ActionListener {
     private MenuPanel menuPanel;
     private ReplayMenuController replayMenu;
 
+    /**
+     * Main entry point for starting the program. Will generate a new display frame
+     * for the program, and creates a menu for starting a new game, or reviewing previous 
+     * game replays.
+     * @see ActionLisener
+     */
     public MenuController()
     {
         frame = new Frame();
         frame.getContentPane().setLayout(new BoxLayout(frame.getContentPane(), BoxLayout.Y_AXIS));
 
-        menuPanel = new MenuPanel(this);
-        replayMenu = new ReplayMenuController(this);
+        menuPanel = new MenuPanel(this); //Create a new menu panel
+        replayMenu = new ReplayMenuController(this); //Creates a new panel for displaying replays
         frame.add(menuPanel);
 
         frame.validate();
         frame.repaint();
-        //board = new PlayableGameController(8, frame);
     }
 
+    /**
+     * Generic Action Listener for getting menu button inputs. Inputs are determined
+     * by the name of the button that created the action event.
+     * Will either create a new game, or display a list of previous replays.
+     * @param e Action Event from a button
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {
         JButton o = (JButton) e.getSource();
 
-        if (o.getName() == "Play")
+        if (o.getName() == "Play") //Starts a new checkers game.
         {
             menuPanel.setEnabled(false);
             menuPanel.setVisible(false);
@@ -52,11 +63,12 @@ public class MenuController implements ActionListener {
         }
         if (o.getName() == "Replays")
         {
+            //Hides the current menu
             menuPanel.setEnabled(false);
             menuPanel.setVisible(false);
 
+            //Adds the replay panel to the frame for viewing replays.
             frame.add(replayMenu.replayPanel);
-
             replayMenu.replayPanel.setVisible(true);
             replayMenu.replayPanel.setEnabled(true);
 

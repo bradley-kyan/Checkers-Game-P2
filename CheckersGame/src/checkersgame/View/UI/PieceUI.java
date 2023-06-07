@@ -18,11 +18,20 @@ public class PieceUI extends BasicButtonUI {
 
     private Color color;
 
+    /**
+     *
+     * @param colour
+     */
     public PieceUI(Color colour)
     {
         this.color = colour;
     }
 
+    /**
+     *
+     * @param g
+     * @param c
+     */
     @Override
     public void paint(Graphics g, JComponent c)
     {

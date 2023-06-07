@@ -27,10 +27,18 @@ public class ReplayGameController extends BoardController implements ActionListe
     private Frame frame;
     private MovesQueue queue;
 
+    /**
+     * Creates a new replay instance, similar to PlayableGameController, but
+     * without allowing the user to move, or creating a new database game entry.
+     * @param mq MoveQueue with piece movement history
+     * @param size Size of the board
+     * @see BoardController
+     */
     public ReplayGameController(MovesQueue mq, int size)
     {
         super();
         PlayableGameController.showHint = false;
+        
         queue = mq;
         panel = new BoardPanel(size);
         frame = MenuController.frame;
@@ -52,6 +60,9 @@ public class ReplayGameController extends BoardController implements ActionListe
         frame.repaint();
     }
 
+    /**
+     * Displays the next move in the replay history
+     */
     public void nextMove()
     {
         Move move = queue.poll();
@@ -70,6 +81,11 @@ public class ReplayGameController extends BoardController implements ActionListe
         frame.repaint();
     }
 
+    /**
+     * Action Listener used by buttons to move one step forward in the replay 
+     * history.
+     * @param e Button action event
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {

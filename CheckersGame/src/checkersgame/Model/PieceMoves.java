@@ -12,17 +12,28 @@ import java.util.ArrayList;
  *
  * @author bradl
  */
-public class LinkedPoint {
+public class PieceMoves {
 
-    public Point toMove; //Move location
-    public Piece origin; //Piece which this move is for
-    public ArrayList<Point> toBeRemoved; //Pieces to be removed
+    /**
+     * Piece's location after move
+     */
+    public Point toMove;
+
+    /**
+     * Piece which this move is for
+     */
+    public Piece origin;
+
+    /**
+     * Pieces to be removed in the process of this move
+     */
+    public ArrayList<Point> toBeRemoved;
 
     /**
      * Initializes the object which will contain a Pieces valid moves, and all
      * pieces that will be removed in the process.
      */
-    public LinkedPoint()
+    public PieceMoves()
     {
         this.toBeRemoved = new ArrayList<Point>();
     }

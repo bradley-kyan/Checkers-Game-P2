@@ -14,6 +14,12 @@ import javax.swing.JFrame;
  */
 public class Frame extends JFrame {
 
+    /**
+     * Creates a new frame for adding components to. The game, and menus
+     * are displayed in this frame. When this frame is closed, all other created
+     * frames are also closed. The frame's size is half of the current screen
+     * size on creation.
+     */
     public Frame()
     {
         Toolkit kit = Toolkit.getDefaultToolkit();

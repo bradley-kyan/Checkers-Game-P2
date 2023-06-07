@@ -15,6 +15,11 @@ import javax.swing.plaf.basic.BasicButtonUI;
  */
 public class MenuButtonUI extends BasicButtonUI {
 
+    /**
+     *
+     * @param g
+     * @param c
+     */
     @Override
     public void paint(Graphics g, JComponent c)
     {

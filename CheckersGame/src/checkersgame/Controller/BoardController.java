@@ -24,6 +24,12 @@ public class BoardController extends MoveController {
     public static Colour playerTurn;
     private static ArrayList<Component> components;
 
+    /**
+     *  Initializes a new Board Controller. This is used for controlling the
+     *  representation of the game of the frame. It handles pieces that are
+     *  displayed on the screen.
+     * @see MoveController
+     */
     public BoardController()
     {
         super(instanceName);
@@ -37,21 +43,23 @@ public class BoardController extends MoveController {
         updatePieces();
     }
 
+    /**
+     * Gets an arrayList of all the current components (pieces) currently on the
+     * board.
+     * @return ArrayList<Component>
+     */
     public ArrayList<Component> getComponents()
     {
         updatePieces();
         return components;
     }
 
+    /**
+     * Updates the board's components to have the correct location as defined by
+     * the pieces in the PiecesArray model class which handles all piece data.
+     */
     public static void updatePieces()
     {
-        for (Piece piece : PiecesArray.getPieces())
-        {
-            if (piece == null)
-            {
-                continue;
-            }
-        }
         if (components == null)
         {
             return;
@@ -71,6 +79,10 @@ public class BoardController extends MoveController {
         }
     }
 
+    /**
+     * Resets the board by removing all components and re-adding components to
+     * the display panel.
+     */
     public static void addPieces()
     {
         pieceController = new BoardController();
@@ -84,6 +96,14 @@ public class BoardController extends MoveController {
         panel.repaint();
     }
 
+    /**
+     * Moves a piece from one location to another. If the piece trying to be moved
+     * is not of the same colour as the player turn, it will not allow the move.
+     * Will pass the move information to the PiecesArray model for further move
+     * handling.
+     * @param piece The piece to be moved
+     * @param location The location of the move as defined by the piece's move hint.
+     */
     public static void movePiece(Piece piece, Point location)
     {
         if (piece.getColour() != playerTurn)
@@ -101,6 +121,9 @@ public class BoardController extends MoveController {
         updatePieces();
     }
 
+    /**
+     * Switches the current player to move to the other.
+     */
     public static void inverseColour()
     {
         if (playerTurn == Colour.RED)

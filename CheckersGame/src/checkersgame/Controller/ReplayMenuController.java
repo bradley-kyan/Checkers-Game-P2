@@ -4,6 +4,7 @@
  */
 package checkersgame.Controller;
 
+import checkersgame.Model.SaveManager;
 import checkersgame.Model.MovesQueue;
 import checkersgame.View.ReplayMenuPanel;
 import java.awt.event.ActionEvent;
@@ -16,13 +17,18 @@ import javax.swing.JButton;
  *
  * @author bradl
  */
-public class ReplayMenuController extends SaveController implements ActionListener {
+public class ReplayMenuController extends SaveManager implements ActionListener {
 
     public ReplayMenuPanel replayPanel;
     private MenuController menu;
     private ReplayGameController board;
     private MovesQueue moves;
 
+    /**
+     * Creates a new panel for displaying all game replays stored in the database.
+     * @param menu
+     * @see SaveManager
+     */
     public ReplayMenuController(MenuController menu)
     {
         super();
@@ -30,7 +36,11 @@ public class ReplayMenuController extends SaveController implements ActionListen
         addButtons();
         this.menu = menu;
     }
-
+    
+    /**
+     * Adds all buttons to the replay list which correspond to a replay in the 
+     * database.
+     */
     private void addButtons()
     {
         ResultSet replays = this.getReplaysList();
@@ -49,9 +59,17 @@ public class ReplayMenuController extends SaveController implements ActionListen
         }
     }
 
+    /**
+     * Action listener for replay buttons for selecting a new replay to watch.
+     * @param e
+     */
     @Override
     public void actionPerformed(ActionEvent e)
     {
+        /**
+         * Checks if the button's name is valid. Button names correspond to a 
+         * database entry
+         */
         String name = ((JButton) e.getSource()).getName();
         Integer ID = null;
         try
@@ -60,10 +78,12 @@ public class ReplayMenuController extends SaveController implements ActionListen
         }
         catch (NumberFormatException ex)
         {
+            //There was an error, this under normal conditions will never be run
             System.out.println(ex);
             ex.printStackTrace();
         }
-
+        
+        //Create a new MoveQueue and fill it with the moves from the replay.
         MovesQueue mq = null;
         if (ID != null)
         {
@@ -78,6 +98,9 @@ public class ReplayMenuController extends SaveController implements ActionListen
         this.startReplay();
     }
 
+    /***
+     * Hides the current replay list and creates a new replay game instance.
+     */
     private void startReplay()
     {
         replayPanel.setVisible(false);

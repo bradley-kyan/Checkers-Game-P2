@@ -18,8 +18,17 @@ import java.util.Iterator;
 public class PiecesArray {
 
     private static int dimension;
+
+    /**
+     * ArrayList of all the current pieces on the board
+     * @see Piece
+     */
     public static ArrayList<Piece> pieces;
 
+    /**
+     * Creates a new board of pieces with the correct placement.
+     * @param size Board's dimensions
+     */
     public PiecesArray(int size)
     {
         this.dimension = size;
@@ -28,8 +37,9 @@ public class PiecesArray {
 
     /**
      * Populates the board with the correct placement and number of pieces.
-     *
+     * Pieces are added to the arrayList.
      * @param dimension Size of the board
+     * @see Piece
      */
     public void populateBoard(int dimension)
     {
@@ -81,7 +91,8 @@ public class PiecesArray {
     }
 
     /**
-     *
+     * Update the moves that all the board's pieces can make
+     * @see getMoves
      */
     public void updateMoves()
     {
@@ -91,6 +102,11 @@ public class PiecesArray {
         }
     }
 
+    /**
+     * Update the moves of a single piece
+     * @param p Piece to be updated
+     * @see getMoves
+     */
     public void updateMoves(Piece p)
     {
         p.moves = this.getMoves(p.position);
@@ -147,22 +163,23 @@ public class PiecesArray {
     }
 
     /**
-     * Moves a specified piece to a new location. Location must be valid. Valid
-     * moves are defined in piece's move list (LinkedPoint). If valid move, will
-     * update piece position and remove all pre-calculated to be removed pieces.
+     * Moves a specified piece to a new location.Location must be valid. Valid
+     *  moves are defined in piece's move list (LinkedPoint). If valid move, will
+     *  update piece position and remove all pre-calculated to be removed pieces.
      *
      * @param piece Piece to be moved
      * @param location New location of piece
-     * @see LinkedPoint.java
+     * @return 
+     * @see PieceMoves
      */
     public boolean movePiece(Piece piece, Point location)
     {
         piece = this.getPiece(piece.getPos());
 
-        ArrayList<LinkedPoint> points = piece.moves;
+        ArrayList<PieceMoves> points = piece.moves;
         boolean success = false;
 
-        for (LinkedPoint lp : points)
+        for (PieceMoves lp : points)
         {
             if (lp.toMove.equals(location))
             {
@@ -189,15 +206,15 @@ public class PiecesArray {
      * @param origin Piece which movements are for.
      * @return ArrayList<LinkedPoint> containing all valid moves a piece can
      * move.
-     * @see getMoves()
+     * @see getMoves
      */
-    public ArrayList<LinkedPoint> filterMoves(ArrayList<ArrayList<Point>> directionalMoves, Piece origin)
+    public ArrayList<PieceMoves> filterMoves(ArrayList<ArrayList<Point>> directionalMoves, Piece origin)
     {
-        ArrayList<LinkedPoint> filtered = new ArrayList<LinkedPoint>();
+        ArrayList<PieceMoves> filtered = new ArrayList<PieceMoves>();
 
         for (ArrayList<Point> dimension : directionalMoves)
         {
-            LinkedPoint lp = new LinkedPoint();
+            PieceMoves lp = new PieceMoves();
             Point lastPoint = null;
 
             for (Point p : dimension)
@@ -272,7 +289,7 @@ public class PiecesArray {
      * @param origin Piece which movements are for.
      * @return ArrayList<LinkedPoint> containing moves a piece can move to.
      */
-    private ArrayList<LinkedPoint> getMoves(Point origin)
+    private ArrayList<PieceMoves> getMoves(Point origin)
     {
         return this.filterMoves(this.potentialMoves(origin), this.getPiece(origin));
     }
@@ -283,7 +300,7 @@ public class PiecesArray {
      * @param p Point on the board
      * @return Multidimensional ArrayList of points in both negative, and
      * positive diagonal directions to given point.
-     * @see getMoves()
+     * @see getMoves
      */
     private ArrayList<ArrayList<Point>> potentialMoves(Point p)
     {

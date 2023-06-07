@@ -10,7 +10,7 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- *
+ * @deprecated 
  * @author kishanyugendran
  */
 public class Player {
@@ -31,6 +31,7 @@ public class Player {
      *
      * @param name The user name of the player
      * @param colour The colour the player is playing as.
+     * @deprecated 
      */
     public Player(String name, Colour colour)
     {
@@ -61,7 +62,7 @@ public class Player {
     }
 
     /**
-     * Inititalises the player name
+     * Initializes the player name
      *
      * @param name The name of the player
      */
@@ -167,52 +168,79 @@ public class Player {
 
     }
 
-    /*
-    *Generates a string which depicts a players wins losses and  total pieces captured
-    * @return a string with the players wins losses and score.
+    /**
+     * Generates a string which depicts a players wins losses and  total pieces captured
+     * @return a string with the players wins losses and score.
+     * @return
      */
+
     public String getWinLossString()
     {
         return "Wins: " + this.wins + ", Losses: " + this.losses + " Total Captures: " + this.score;
     }
 
+    /**
+     *
+     * @return
+     */
     public Colour getColour()
     {
         return this.colour;
     }
 
+    /**
+     *
+     */
     public void capture()
     {
         this.score++;
     }
 
+    /**
+     *
+     */
     public void win()
     {
         this.wins++;
     }
 
+    /**
+     *
+     */
     public void lose()
     {
         this.losses++;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getScore()
     {
         return this.score;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getWins()
     {
         return this.wins;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getLosses()
     {
         return this.losses;
     }
 
     /*
-    * Creates a leaderboard with all players  names  and data such as wins losses and score.
+     * Creates a leaderboard with all players  names  and data such as wins losses and score.
      */
     public static void displayLeaderboard()
     {

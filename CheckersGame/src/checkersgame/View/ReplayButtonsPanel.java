@@ -18,6 +18,10 @@ public class ReplayButtonsPanel extends JPanel {
 
     private BasicArrowButton b;
 
+    /**
+     *
+     * @param controller
+     */
     public ReplayButtonsPanel(ReplayGameController controller)
     {
         b = new BasicArrowButton(EAST);
@@ -26,6 +30,10 @@ public class ReplayButtonsPanel extends JPanel {
         this.add(b);
     }
 
+    /**
+     *
+     * @param g
+     */
     @Override
     public void paintComponent(Graphics g)
     {
