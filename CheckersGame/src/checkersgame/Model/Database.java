@@ -9,6 +9,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -29,6 +31,10 @@ public class Database {
     {
         establishDBConn();
         createTables();
+    }
+    public Database(boolean test)
+    {
+        
     }
 
     /**
@@ -53,6 +59,27 @@ public class Database {
                     + "of the game before running!", "Fatal Game Error", JOptionPane.ERROR_MESSAGE);
             System.exit(0);
         }
+    }
+    
+    public Connection getConnection()
+    {
+        return conn;
+    }
+    
+    /**
+     * Closes the current database connection
+     */
+    public void disconnect()
+    {
+        try
+        {
+            conn.close();
+        }
+        catch (SQLException ex)
+        {
+            System.out.println(ex);
+        }
+        conn = null;
     }
 
     /**
