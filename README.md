@@ -16,12 +16,13 @@ This repo contains the [Netbeans](https://netbeans.apache.org/) project of the g
 
 ## Repo Structure ##
 The game project files can be found in **./CheckersGame** </br>
-Javadoc can be found in **./CheckersGame/javadoc** </br>
+Javadoc can be found in **.build/javadoc** </br>
 Prebuilt files can be found in **./build**
 
     Checkers-Game-P2/
     ├─ build/               <-- Prebuild Jars
-    ├─ CheckersGame/       <-- Project Files
-       ├─ javadoc/         <-- Project Javadoc
+        ├─ javadoc/         <-- Project Javadoc
+    ├─ CheckersGame/        <-- Project Files
+   
    
 
