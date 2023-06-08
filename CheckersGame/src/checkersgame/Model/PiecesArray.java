@@ -4,6 +4,7 @@
  */
 package checkersgame.Model;
 
+import checkersgame.Model.PieceComponents.PieceMoves;
 import checkersgame.Model.PieceComponents.Rank;
 import checkersgame.Model.PieceComponents.Piece;
 import checkersgame.Model.PieceComponents.Colour;

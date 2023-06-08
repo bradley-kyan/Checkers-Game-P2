@@ -1,6 +1,5 @@
 package checkersgame.Model.PieceComponents;
 
-import checkersgame.Model.PieceMoves;
 import java.awt.Point;
 import java.util.ArrayList;
 

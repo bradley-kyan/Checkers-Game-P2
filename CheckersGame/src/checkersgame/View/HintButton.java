@@ -6,7 +6,7 @@ package checkersgame.View;
 
 import checkersgame.View.UI.HintUI;
 import checkersgame.Controller.PlayableGameController;
-import checkersgame.Model.PieceMoves;
+import checkersgame.Model.PieceComponents.PieceMoves;
 import checkersgame.Model.PieceComponents.Piece;
 import java.awt.Dimension;
 import java.awt.Graphics;

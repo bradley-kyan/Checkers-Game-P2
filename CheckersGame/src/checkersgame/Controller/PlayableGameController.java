@@ -1,5 +1,6 @@
 package checkersgame.Controller;
 
+import checkersgame.Model.PieceComponents.PieceMoves;
 import static checkersgame.Controller.MenuController.frame;
 import checkersgame.Model.PieceComponents.Piece;
 import checkersgame.Model.PieceComponents.Colour;
